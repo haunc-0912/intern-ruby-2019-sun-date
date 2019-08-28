@@ -1,1 +1,15 @@
 dev_team: "2019 © Ruby Team."
+validates:
+  max_name: 50
+  max_email: 255
+  min_pass: 6
+  max_content: 140
+  max_address: 100
+  valid_email: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
+  max_company: 50
+  max_alt: 20
+  max_location: 100
+  max_distance: 200
+  max_age: 100
+  max_description: 5000
+zero: 0

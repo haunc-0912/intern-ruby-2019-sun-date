@@ -32,3 +32,5 @@ en:
   button:
     back: "Back"
     submit: "Submit"
+  validates:
+    check_age: "can't be greater than end_age"
