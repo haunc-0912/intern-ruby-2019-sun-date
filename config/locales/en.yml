@@ -34,3 +34,45 @@ en:
     submit: "Submit"
   validates:
     check_age: "can't be greater than end_age"
+  base:
+    title: "Sun-Date"
+  home:
+    title: "Home"
+  header:
+    external:
+      you_have: "You have"
+      notifications: "notifications"
+      view_all: "View all"
+    notifications:
+      strong: "12 pendings"
+      just_now: "just now"
+      new_user_registered: "New user registered."
+      3_mins: "3 mins"
+      server_12: "Server #12 overloaded."
+      10_mins: "10 mins"
+      server_2: "Server #2 not responding"
+      14_hrs: "14 hrs"
+      application_error: "Application error"
+      badge-default: "7"
+      percent-default: "30%"
+      percent-compelete: "40% Complete"
+    message:
+      you_have: "You have"
+      strong: "7 new"
+      message: "message"
+      view_all: "View all"
+      from: "Lisa Wong"
+      time: "Just Now"
+      message_content: "Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh..."
+    menu:
+      user: "Nick"
+      profile: "My Profile"
+      inbox: "My Inbox"
+      log-out: "Log Out"
+    sub-menu:
+      suggestion: "Suggestions"
+      match: "Matches"
+      review: "Review"
+  footer:
+    author_year: "2019"
+    author: " Ruby Team"

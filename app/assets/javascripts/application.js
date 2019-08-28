@@ -16,4 +16,7 @@
 //= require page/login.min.js
 //= require moment.min.js
 //= require bootstrap-datepicker/js/bootstrap-datepicker.min.js
+//= require global/quick-sidebar.min.js
+//= require page/login.min.js
+//= require layout/layout.min.js
 //= require_tree .
