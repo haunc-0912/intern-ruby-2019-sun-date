@@ -17,6 +17,8 @@ gem "config"
 gem "jquery-rails"
 gem "ffaker"
 gem "rails-i18n"
+gem "i18n-js"
+gem "font-awesome-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

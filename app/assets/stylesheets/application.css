@@ -1,4 +1,14 @@
 /*
+ *= require font-awesome
+ *= require simple-line-icons/simple-line-icons.min.css
+ *= require bootstrap/css/bootstrap.min.css
+ *= require bootstrap-switch/css/bootstrap-switch.min.css
+ *= require global/components-rounded.min.css
+ *= require global/plugins.min.css
+ *= require page/login.min.css
+ *= require select2/css/select2-bootstrap.min.css
+ *= require select2/css/select2.min.css
+ *= require bootstrap-datepicker/css/bootstrap-datepicker3.min.css
  *= require_tree .
  *= require_self
  */
