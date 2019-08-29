@@ -41,6 +41,7 @@ config/environments/*.local.yml
 /log/
 .byebug_history
 /log/
-
+/vendor/assets/
+.idea/
 # Ignore application configuration
 /config/application.yml

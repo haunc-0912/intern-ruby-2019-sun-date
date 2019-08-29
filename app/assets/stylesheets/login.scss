@@ -1,0 +1,58 @@
+@import 'colors';
+
+img {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.login {
+  background-color: $blue !important;
+
+  .logo {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    width: 35%;
+  }
+
+  .content {
+    margin-top: 0;
+
+    .create-account {
+      background: $blue_btn;
+
+      p a {
+        color: $white;
+      }
+    }
+  }
+
+  a {
+    text-align: center;
+  }
+
+  .copyright {
+    margin-bottom: 0;
+    color: $white;
+  }
+}
+
+/* Page */
+.page-logo a {
+  display: inline-block;
+}
+
+.page-header .page-header-top .page-logo .logo-default {
+  margin-top: 0;
+}
+
+.profile-userbuttons {
+  padding: 0 30px;
+}
+
+/* Register */
+.btn.default:not(.btn-outline) {
+  &.btn-default--high {
+    line-height: 29px;
+  }
+}
