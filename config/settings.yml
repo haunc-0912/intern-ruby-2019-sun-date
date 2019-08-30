@@ -13,3 +13,6 @@ validates:
   max_age: 100
   max_description: 5000
 zero: 0
+cm: "(cm)"
+kg: "(kg)"
+km: "(km)"

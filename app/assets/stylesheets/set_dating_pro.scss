@@ -1,0 +1,13 @@
+@import 'colors.scss';
+
+#age_slider {
+  margin-top: 40px;
+}
+
+.noUi-handle .noUi-tooltip {
+  top: -35px;
+}
+
+.noUi-handle {
+  background: $blue_btn;
+}
