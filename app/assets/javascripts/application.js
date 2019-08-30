@@ -5,6 +5,7 @@
 //= require i18n
 //= require i18n.js
 //= require i18n/translations
+//= require nouislider
 //= require bootstrap/js/bootstrap.min.js
 //= require bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
 //= require jquery-slimscroll/jquery.slimscroll.min.js
@@ -19,4 +20,5 @@
 //= require global/quick-sidebar.min.js
 //= require page/login.min.js
 //= require layout/layout.min.js
+//= require wNumb.js
 //= require_tree .

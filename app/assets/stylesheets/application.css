@@ -15,6 +15,9 @@
  *= require layouts/default.min.css
  *= require layouts/layout.min.css
  *= require page/profile.min.css
+ *= require layout.min.css
+ *= require default.min.css
+ *= require nouislider
  *= require_tree .
  *= require_self
  */
