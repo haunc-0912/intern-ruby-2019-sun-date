@@ -9,6 +9,12 @@
  *= require select2/css/select2-bootstrap.min.css
  *= require select2/css/select2.min.css
  *= require bootstrap-datepicker/css/bootstrap-datepicker3.min.css
+ *= require apps/ticket.min.css
+ *= require font-awesome/css/font-awesome.min.css
+ *= require layouts/custom.min.css
+ *= require layouts/default.min.css
+ *= require layouts/layout.min.css
+ *= require page/profile.min.css
  *= require_tree .
  *= require_self
  */

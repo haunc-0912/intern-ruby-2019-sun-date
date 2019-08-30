@@ -1,0 +1,43 @@
+vi:
+  base:
+    title: "Sun-Date"
+  home:
+    title: "Trang chủ"
+  header:
+    external:
+      you_have: "Bạn có"
+      notifications: "thông báo"
+      view_all: "Xem tất cả"
+    notifications:
+      strong: "12 thông báo"
+      just_now: "Vừa xong"
+      new_user_registered: "Có người dùng vừa đăng ký"
+      3_mins: "3 phút"
+      server_12: "Server #12 quá tải."
+      10_mins: "10 mins"
+      server_2: "Server #2 không phản hồi"
+      14_hrs: "14 hrs"
+      application_error: "Ứng dụng bị lỗi"
+      badge-default: "7"
+      percent-default: "30%"
+      percent-compelete: "40% hoàn tất"
+    message:
+      you_have: "Bạn có"
+      strong: "7 tin"
+      message: "mới"
+      view_all: "Xem tất cả"
+      from: "Lisa Wong"
+      time: "Ngay lập tức"
+      message_content: "Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh..."
+    menu:
+      user: "Nick"
+      profile: "Hồ sơ của tôi"
+      inbox: "Tin nhắn của tôi"
+      log-out: "Đăng xuất"
+    sub-menu:
+      suggestion: "Đề cử"
+      match: "Đã kết nối"
+      review: "Phản hồi"
+  footer:
+    author_year: "2019"
+    author: " Ruby Team"
