@@ -1,4 +1,34 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+}
+
+.page-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+  :recoverable, :rememberable, :trackable, :validatable,
+  :omniauthable, omniauth_providers: [:facebook]
+
   VALID_EMAIL_REGEX = Settings.validates.valid_email
 
   enum role: {normal: 0, admin: 1}
@@ -29,14 +59,29 @@ class User < ApplicationRecord
   has_many :owners, through: :passive_notifications, source: :owner
 
   validates :name, presence: true, length:
-  {maximum: Settings.validates.max_name}
+    {maximum: Settings.validates.max_name}
   validates :email, presence: true, length:
-  {maximum: Settings.validates.max_email}, format:
-  {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
-  validates :address, presence: true, length:
-  {maximum: Settings.validates.max_address}
-  validates :gender, presence: true
-  validates :birthday, presence: true
-  validates :company, presence: true, length:
-  {maximum: Settings.validates.max_company}
+    {maximum: Settings.validates.max_email}, format:
+    {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
+  validates :address, length:
+    {maximum: Settings.validates.max_address}
+  validates :company, length:
+    {maximum: Settings.validates.max_company}
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name
+      user.image = auth.info.avatar
+    end
+  end
 end
