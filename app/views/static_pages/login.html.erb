@@ -52,13 +52,10 @@
           <% end %>
         </li>
         <li>
-          <a
-            href="#"
-            class="socicon-btn socicon-btn-circle socicon-sm socicon-solid bg-red bg-hover-grey-salsa font-white bg-hover-white tooltips"
-            data-original-title="Google"
-          >
-            <i class="fa fa-google-plus"></i>
-          </a>
+          <%= link_to user_google_oauth2_omniauth_authorize_path, class: "socicon-btn socicon-btn-circle socicon-sm socicon-solid bg-red bg-hover-grey-salsa font-white bg-hover-white tooltips",
+            "data-original-title" => "Google" do  %>
+            <i class="fa fa-google-plus" aria-hidden="true"></i>
+          <% end %>
         </li>
       </ul>
     </div>

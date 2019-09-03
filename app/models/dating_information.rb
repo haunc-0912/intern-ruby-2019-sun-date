@@ -21,6 +21,7 @@ class DatingInformation < ApplicationRecord
 
   def start_age_cannot_be_greater_than_end_age
     return unless start_age > end_age
+
     errors.add(:start_age, "start_age can't greater than end_age")
   end
 end

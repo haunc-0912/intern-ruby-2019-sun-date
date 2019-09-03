@@ -87,3 +87,7 @@ en:
     distance: "Dating Distance"
     age_range: "Age Range"
     prefer_gender: "Prefer Gender"
+  google:
+    flash:
+      error: "Có lỗi xảy ra"
+      success: "Login successful"
