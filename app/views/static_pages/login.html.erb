@@ -1,14 +1,10 @@
 <% content_for :body_class, "login" %>
-<!-- BEGIN LOGO -->
 <div class="logo">
   <a href="index.html">
     <%= image_tag "logo_perfect.png" %>
   </a>
 </div>
-<!-- END LOGO -->
-<!-- BEGIN LOGIN -->
 <div class="content">
-  <!-- BEGIN LOGIN FORM -->
   <form class="login-form" action="index.html" method="post">
     <h3 class="form-title font-green">
       <%= t "login.title" %>
@@ -18,7 +14,6 @@
       <span> <%= t "login.flash.enter_user_pass" %> </span>
     </div>
     <div class="form-group">
-      <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
       <label class="control-label visible-ie8 visible-ie9">
         <%= t "login.label.username" %>
       </label>
@@ -51,13 +46,10 @@
       </h4>
       <ul class="list-unstyled list-inline pull-right">
         <li>
-          <a
-            href="#"
-            class="socicon-btn socicon-btn-circle socicon-sm socicon-solid bg-blue bg-hover-grey-salsa font-white bg-hover-white tooltips"
-            data-original-title="Facebook"
-          >
+          <%= link_to user_facebook_omniauth_authorize_path, class: "socicon-btn socicon-btn-circle socicon-sm socicon-solid bg-blue bg-hover-grey-salsa font-white bg-hover-white tooltips",
+            data: {"originam-title": "Facebook"} do %>
             <i class="fa fa-facebook"></i>
-          </a>
+          <% end %>
         </li>
         <li>
           <a
@@ -78,8 +70,6 @@
       </p>
     </div>
   </form>
-  <!-- END LOGIN FORM -->
-  <!-- BEGIN FORGOT PASSWORD FORM -->
   <form class="forget-form" action="index.html" method="post">
     <h3 class="font-green">
       <%= t "reset_pass.title" %>
@@ -101,8 +91,6 @@
       </button>
     </div>
   </form>
-  <!-- END FORGOT PASSWORD FORM -->
-  <!-- BEGIN REGISTRATION FORM -->
   <form class="register-form" action="index.html" method="post">
     <h3 class="font-green">
       <%= t "signup.title" %>
@@ -163,7 +151,6 @@
       <%= t "signup.enter_acc_info" %>
     </p>
     <div class="form-group">
-      <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
       <label class="control-label visible-ie8 visible-ie9">
         <%= t "signup.email" %>
       </label>
@@ -201,7 +188,6 @@
       </button>
     </div>
   </form>
-  <!-- END REGISTRATION FORM -->
 </div>
 <div class="copyright">
   <%= Settings.dev_team %>

@@ -16,3 +16,6 @@ zero: 0
 cm: "(cm)"
 kg: "(kg)"
 km: "(km)"
+validate:
+  VALID_EMAIL_REGEX: !ruby/regexp '/\A[^@\s]+@[^@\s]+\z/'
+fb: "Facebook"

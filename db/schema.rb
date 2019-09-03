@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_014034) do
+ActiveRecord::Schema.define(version: 2019_09_03_035053) do
 
-  create_table "dating_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "dating_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "height"
     t.integer "weight"
     t.string "dating_location"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_014034) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "alt"
     t.string "link"
     t.bigint "user_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_014034) do
     t.index ["user_id"], name: "index_images_on_user_id"
   end
 
-  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "receiver_id"
     t.text "content"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_014034) do
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.integer "owner_id"
     t.integer "trackable_id"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_014034) do
     t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
   end
 
-  create_table "reactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "reactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "active_user_id"
     t.integer "passive_user_id"
     t.integer "status"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_014034) do
     t.index ["passive_user_id"], name: "index_reactions_on_passive_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
     t.string "name"
@@ -82,9 +82,23 @@ ActiveRecord::Schema.define(version: 2019_08_28_014034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "dating_information_id"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "token"
+    t.string "uid"
+    t.string "image"
+    t.string "provider"
     t.index ["dating_information_id"], name: "index_users_on_dating_information_id"
     t.index ["email"], name: "index_users_on_email"
     t.index ["name"], name: "index_users_on_name"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "images", "users"
