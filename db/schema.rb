@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_09_03_035053) do
 
-  create_table "dating_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "dating_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "height"
     t.integer "weight"
     t.string "dating_location"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_035053) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "alt"
     t.string "link"
     t.bigint "user_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_035053) do
     t.index ["user_id"], name: "index_images_on_user_id"
   end
 
-  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "receiver_id"
     t.text "content"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_035053) do
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "content"
     t.integer "owner_id"
     t.integer "trackable_id"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_035053) do
     t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
   end
 
-  create_table "reactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "reactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "active_user_id"
     t.integer "passive_user_id"
     t.integer "status"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_035053) do
     t.index ["passive_user_id"], name: "index_reactions_on_passive_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
     t.string "name"
