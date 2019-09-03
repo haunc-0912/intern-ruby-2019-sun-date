@@ -3,7 +3,7 @@ en:
   login:
     title: "Login"
     label:
-      username: "Username"
+      username: "Email"
       password: "Password"
       remember: "Remember"
       forgot_pass: "Forgot Password?"

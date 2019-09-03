@@ -25,6 +25,18 @@ img {
         color: $white;
       }
     }
+    
+    .form-control {
+      color: $black;
+    }
+
+    .rememberme {
+      margin-left: 2px;
+
+      &.mt-checkbox {
+        padding-left: 23px;
+      }
+    }
   }
 
   a {
@@ -55,4 +67,10 @@ img {
   &.btn-default--high {
     line-height: 29px;
   }
+}
+
+.alert-notice {
+  background-color: $success;
+  border-color: $success;
+  color: $success_text;
 }
