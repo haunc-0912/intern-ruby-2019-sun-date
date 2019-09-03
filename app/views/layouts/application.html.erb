@@ -11,7 +11,7 @@
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
 
-  <body class="page-container-bg-solid>
+  <body class="<%= yield :body_class %>">
     <div id="wrap">
       <%= render "layouts/header"%>
       <div id="content">
