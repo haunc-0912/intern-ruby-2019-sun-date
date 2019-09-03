@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  root "static_pages_controller#home"
-
-  get "/login", to: "static_pages#login"
-  get "/signup", to: "static_pages#signup"
-  get "/set_dating", to: "static_pages#set_dating"
+  root "static_pages#home"
 
   devise_for :users, controllers: {
+    sessions: "users/sessions",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
+
+  devise_scope :user do
+    get "sign_in", to: "users/sessions#new"
+  end
 end

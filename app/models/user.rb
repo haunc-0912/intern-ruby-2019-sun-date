@@ -4,7 +4,6 @@ class User < ApplicationRecord
   :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   VALID_EMAIL_REGEX = Settings.validates.valid_email
-
   enum role: {normal: 0, admin: 1}
 
   has_many :images, dependent: :destroy
@@ -46,7 +45,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length:
   {minimum: Settings.validates.min_pass}
 
-  def self.new_with_session(params, session)
+  def self.new_with_session params, session
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
@@ -54,7 +53,7 @@ class User < ApplicationRecord
     end
   end
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth auth
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
