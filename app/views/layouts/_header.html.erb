@@ -136,6 +136,11 @@
             </li>
             <li class="dropdown dropdown-user dropdown-dark">
               <%= link_to "", href:"#", class:"dropdown-toggle", data: {toggle: "dropdown", hover: "dropdown", "close-others": "true"} do %>
+                <% if current_user.avatar.present? %>
+                  <%= image_tag current_user.avatar.url, class: "img-circle" %>
+                <% elsif current_user.image_sc.present? %>
+                  <%= image_tag current_user.image_sc, class: "img-circle" %>
+                <% end %>
                 <span class="username username-hide-mobile"><%= current_user[:name] %></span>
               <% end %>
                 <ul class="dropdown-menu dropdown-menu-default">
