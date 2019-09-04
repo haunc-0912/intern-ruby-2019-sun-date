@@ -19,3 +19,4 @@ km: "(km)"
 validate:
   VALID_EMAIL_REGEX: !ruby/regexp '/\A[^@\s]+@[^@\s]+\z/'
 fb: "Facebook"
+gg: "Google"

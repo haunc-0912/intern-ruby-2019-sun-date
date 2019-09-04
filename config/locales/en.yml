@@ -6,10 +6,12 @@ en:
     label:
       username: "Email"
       password: "Password"
+      password_confirm: "Password Confirmation"
       remember: "Remember"
       forgot_pass: "Forgot Password?"
       login_with: "Login with"
       create_acc: "Create an Account?"
+      name: "Name"
     flash:
       enter_user_pass: "Enter username, password"
   reset_pass:

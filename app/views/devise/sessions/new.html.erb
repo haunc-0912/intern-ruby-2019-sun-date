@@ -60,9 +60,7 @@
 
     <div class="create-account">
       <p>
-        <a id="register-btn" class="uppercase">
-          <%= t "login.label.create_acc" %>
-        </a>
+        <%= link_to t("login.label.create_acc"), new_user_registration_path, class: "uppercase", id: "register-btn" %>
       </p>
     </div>
   <% end %>
