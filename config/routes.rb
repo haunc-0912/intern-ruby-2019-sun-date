@@ -22,7 +22,14 @@ Rails.application.routes.draw do
   resource :suggest_users, only: :show do
     get :react
   end
-  resources :images
+
+  resource :review_disliked_users, only: :show do
+    get :react
+  end
+
+  resource :review_blocked_users, only: :show do
+    get :react
+  end
 
   devise_for :users, controllers: {
     sessions: "users/sessions",

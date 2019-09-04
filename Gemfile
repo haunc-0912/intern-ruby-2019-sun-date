@@ -32,7 +32,6 @@ gem "toastr-rails"
 gem "public_activity"
 gem "ransack"
 gem "flex-slider-rails"
-gem "sass-rails", "~> 5.0"
 gem "bootstrap-sass", "~> 3.3.6"
 
 group :development, :test do

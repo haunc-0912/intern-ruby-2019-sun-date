@@ -2,7 +2,7 @@
   <div class="portlet light profile-sidebar-portlet">
     <div class="profile-userpic">
       <% if @user.avatar.present? %>
-        <%= image_tag user.avatar.url, class: "img-responsive" %>
+        <%= image_tag @user.avatar.url, class: "img-responsive" %>
       <% elsif @user.image_sc.present? %>
         <%= image_tag @user.image_sc, class: "img-responsive" %>
       <% end %>
