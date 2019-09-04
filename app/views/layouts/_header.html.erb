@@ -18,7 +18,7 @@
             <%= link_to "", href:"#", class:"menu-toggler" %>
             <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
               <%= link_to "", href:"#", class:"dropdown-toggle", data: {toggle: "dropdown", hover: "dropdown", "close-others": "true"} do %>
-                <i class="icon-bell"></i>
+                <i class="fa fa-bell-o"></i>
                 <span class="badge badge-default" ><%= t "header.notifications.badge-default" %></span>
               <% end %>
               <ul class="dropdown-menu">
@@ -74,7 +74,7 @@
             </li>
             <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
               <%= link_to "", href:"#", class:"dropdown-toggle", data: {toggle: "dropdown", hover: "dropdown", "close-others": "true"} do %>
-                <i class="icon-calendar"></i>
+                <i class="fa fa-calendar"></i>
                 <span class="badge badge-default"><%= t "header.notifications.badge-default" %></span>
               <% end %>
                 <ul class="dropdown-menu extended tasks">
@@ -141,19 +141,19 @@
                 <ul class="dropdown-menu dropdown-menu-default">
                   <li>
                     <%= link_to "", href:"#" do %>
-                    <i class="icon-user"></i> <%= t "header.menu.profile" %>
+                    <i class="fa fa-user-o"></i> <%= t "header.menu.profile" %>
                     <% end %>
                   </li>
                   <li>
                     <%= link_to "", href:"#" do %>
-                      <i class="icon-envelope-open"></i> <%= t "header.menu.inbox" %>
+                      <i class="fa fa-envelope-open-o"></i> <%= t "header.menu.inbox" %>
                       <span class="badge badge-danger"> <%= t "header.notifications.badge-default" %> </span>
                     <% end %>
                   </li>
                   <li class="divider"></li>
                   <li>
                     <%= link_to destroy_user_session_path, method: :delete do %>
-                      <i class="icon-key"></i> <%= t "header.menu.log-out" %>
+                      <i class="fa fa-key"></i> <%= t "header.menu.log-out" %>
                     <% end %>
                   </li>
                 </ul>
