@@ -21,7 +21,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user
       flash[:success] = t "google.flash.success"
       session["devise.google_data"] = request.env["omniauth.auth"].except(:extra)
-      redirect_to root_path
+      sign_in_and_redirect @user, event: :authentication
     else
       flash[:danger] = t "google.flash.error"
       redirect_to sign_in_path
