@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :dating_informations
   resources :images
+  resources :matches, only: %i(index show)
   resource :dating_criterias, only: %i(edit update)
+
   get "dating_criterias/search_location", to: "dating_criterias#search_location"
 
   resource :suggest_users, only: :show do

@@ -148,6 +148,8 @@ en:
     flash:
       error: "Error happened"
       success: "Set dating successful"
+    errors:
+      birthday: ": you are not enough age to use app, you must be greater than 18 "
   review_dislike:
     title: "Reviewing users were disliked"
     button:
@@ -173,3 +175,9 @@ en:
       error: "Error happened"
       delete_success: "Your image was deleted"
       no_image: "Has no image"
+  match:
+    no_user: "Has no user"
+    name: "Users matched"
+    chat: "Chat"
+    user_name: "User Name:"
+    button_search: "Search"

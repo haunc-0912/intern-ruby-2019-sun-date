@@ -22,4 +22,5 @@
 //= require layout/layout.min.js
 //= require wNumb.js
 //= require toastr
+//= require jquery.flexslider-min
 //= require_tree .

@@ -1,0 +1,7 @@
+<%= search_form_for @search, url: matches_path, class: "form-inline" do |f| %>
+  <div class="form-group">
+      <%= f.label :name_cont, t("match.user_name") %>
+        <%= f.text_field :name_cont, class: "form-control" %><br>
+    </div>
+    <%= f.submit t("match.button_search"), class: "btn btn-default" %>
+<% end %>
