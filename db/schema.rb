@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 2019_09_05_013521) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "dating_information_id"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -99,12 +98,10 @@ ActiveRecord::Schema.define(version: 2019_09_05_013521) do
     t.string "uid"
     t.string "image"
     t.string "provider"
-    t.index ["dating_information_id"], name: "index_users_on_dating_information_id"
     t.index ["email"], name: "index_users_on_email"
     t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "images", "users"
-  add_foreign_key "users", "dating_informations"
 end

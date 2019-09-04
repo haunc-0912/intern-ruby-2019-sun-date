@@ -94,6 +94,8 @@ en:
     distance: "Dating Distance"
     age_range: "Age Range"
     prefer_gender: "Prefer Gender"
+    description: "Description"
+    max: "(5000)"
   set_criteria:
     title: "Set Citeria"
     desc: "Set your dating citeria to get approriate suggestions."
@@ -111,3 +113,7 @@ en:
     no_account: "No such account!"
     update_success: "Update Success!"
     update_fail: "Update Failed!"
+  dating:
+    flash:
+      error: "Error happened"
+      success: "Set dating successful"
