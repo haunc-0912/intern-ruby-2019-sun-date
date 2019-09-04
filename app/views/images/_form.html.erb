@@ -1,0 +1,15 @@
+<%= form_for(@user, url: images_path ,html: {multipart: true, method: :post}) do |f| %>
+  <%= f.fields_for :image do |ff| %>
+    <div class="form-group">
+      <label class="bold">
+        <%= t "image.name" %>
+      </label>
+      <%= ff.file_field :link, multiple: true, name: "user[images][link][]", class: "upload-image" %>
+      <button type="submit" class="btn btn-success uppercase submit_img">
+        <%= t "button.submit" %>
+      </button>
+    </div>
+  <% end %>
+  <div id="preview"></div>
+  
+<% end %>

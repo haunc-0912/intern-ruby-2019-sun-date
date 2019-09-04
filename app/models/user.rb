@@ -5,12 +5,12 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = Settings.validates.valid_email
   USER_PARAMS = [:birthday, :avatar, :address, :company, dating_information_attributes: [:height, :weight, :description]].freeze
+  USER_IMAGE_PARAMS = [image_attributes: [:link]].freeze
 
   enum role: {normal: 0, admin: 1}
 
-  has_one :dating_information, dependent: :destroy
-  accepts_nested_attributes_for :dating_information
   has_many :images, dependent: :destroy
+  
   has_many :active_messages, class_name: Message.name,
   foreign_key: "sender_id", dependent: :destroy
   has_many :receivers, through: :active_messages, source: :receiver
@@ -38,6 +38,7 @@ class User < ApplicationRecord
   has_one :dating_information, dependent: :destroy
 
   accepts_nested_attributes_for :dating_information
+  accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |attributes| attributes["image"].blank? }
 
   mount_uploader :avatar, ImageUploader
 

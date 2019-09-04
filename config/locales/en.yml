@@ -79,6 +79,7 @@ en:
       profile: "My Profile"
       inbox: "My Inbox"
       log-out: "Log Out"
+      album: "Album"
     sub-menu:
       suggestion: "Suggestions"
       match: "Matches"
@@ -144,3 +145,13 @@ en:
       name: "Name: "
       address: "Address: "
       birthday: "Birthday: "
+  image:
+    name: "Image"
+    upload: "Upload Image"
+    album: "Your image"
+    delete: "Delete"
+    message:
+      upload_success: "Your images were uploaded"
+      error: "Error happened"
+      delete_success: "Your image was deleted"
+      no_image: "Has no image"

@@ -1,0 +1,47 @@
+<% content_for :body_class, "page-container-bg-solid" %>
+
+<div class="page-content">
+  <div class="container">
+    <div class="page-content-inner">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+              <div class="caption caption-md">
+                <i class="icon-globe theme-font hide"></i>
+                <span class="caption-subject font-blue-madison bold uppercase">
+                  <%= t "image.upload" %>
+                </span>
+              </div>
+            </div>
+            <div class="portlet-body">
+              <%= render "form" %>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+              <div class="caption caption-md">
+                <i class="icon-globe theme-font hide"></i>
+                <span class="caption-subject font-blue-madison bold uppercase">
+                  <%= t "image.album" %>
+                </span>
+              </div>
+            </div>
+            <div class="row">
+              <% @image.each do |img| %>
+                <div class="col-md-6 text-right">
+                  <%= image_tag img.link.url, class: "images"%>
+                  <%= link_to t("image.delete"), image_path(img), method: :delete, class: "btn-sm btn-primary btn-delete" %>
+                </div>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
