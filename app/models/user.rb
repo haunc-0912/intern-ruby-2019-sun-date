@@ -55,7 +55,7 @@ class User < ApplicationRecord
   scope :by_no_block, ->(current_user_id) {where.not id: Reaction.block.where(passive_user_id: current_user_id).pluck(:active_user_id)}
   scope :by_distance, ->(user, distance) {where id: DatingInformation.near(user.dating_information, distance).map(&:user_id)}
   scope :by_age_range, ->(start_age, end_age) {where birthday: end_age.years.ago..start_age.years.ago}
-  scope :info_user_match, -> (user_id){ where id: (Reaction.matches user_id).pluck(:passive_user_id)}
+  scope :info_user_match, -> (user){ where id: (Reaction.matches user).pluck(:passive_user_id)}
 
   scope :by_prefer_gender, ->(gender) do
     send("#{gender}") unless gender == Settings.gender.both
@@ -68,6 +68,10 @@ class User < ApplicationRecord
       .by_distance(current_user, current_user.dating_information.dating_distance)
       .where.not id: current_user.id
   end
+
+  scope :info_user_like_me, ->(current_user) do
+    current_user.reacters.by_status_reacters(:like).by_no_reaction current_user.id
+  end  
 
   Reaction.statuses.keys.each do |action|
     define_method action do |other_user|

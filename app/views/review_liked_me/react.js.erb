@@ -1,0 +1,16 @@
+<% if @react == Settings.noti_key.like %>
+  toastr.success('<%= t "flash.you_like" %><%= @pass_user.name %>','<%= t "flash.like" %>');
+<% elsif @react == Settings.noti_key.dislike %>
+  toastr.error('<%= t "flash.you_dislike" %><%= @pass_user.name %>','<%= t "flash.dislike" %>');
+<% else %>
+  toastr.info('<%= t "flash.you_block" %><%= @pass_user.name %>','<%= t "flash.block" %>');
+<% end %>
+<% if @users %>
+  $('#content-inner').html('<%= j render "user", user: @users %>');
+<% else %>
+  $('#content-inner').html('<%= j render "reaction/no_results" %>');
+<% end %>
+<% if @match %>
+  $('#modal-content').html('<%= j render "reaction/modal", pass_user: @pass_user %>');
+  $('#match-modal').modal();
+<% end %>

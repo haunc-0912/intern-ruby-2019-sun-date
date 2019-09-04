@@ -1,0 +1,31 @@
+<% @users.each do |user| %>
+  <div class="col-md-4">
+    <div class="profile-sidebar">
+      <div class="portlet light profile-sidebar-portlet">
+        <div class="profile-userpic">
+          <% if user.avatar.present? %>
+            <%= image_tag user.avatar.url, class: "img-responsive" %>
+          <% elsif user.image_sc.present? %>
+            <%= image_tag user.image_sc, class: "img-responsive" %>
+          <% end %>
+        </div>
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <%= link_to user.name, review_liked_me_path(user) %>
+          </div>
+          <div class="profile-usertitle-job">
+            <%= t "suggestion.age" %>
+            <%= calculate_age user.birthday %>
+          </div>
+        </div>
+        <div class="profile-userbuttons">
+          <div class="btn-group btn-group btn-group-justified">
+            <%= link_to t("action.like"), react_review_liked_me_index_path(passive_user_id: user.id, react: :like), class: "btn btn-success", remote: true %>
+            <%= link_to t("action.dislike"), react_review_liked_me_index_path(passive_user_id: user.id, react: :dislike), class: "btn red", remote: true %>
+            <%= link_to t("action.block"), react_review_liked_me_index_path(passive_user_id: user.id, react: :block), class: "btn grey-cascade", remote: true %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

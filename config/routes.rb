@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'room_chat/index'
+  get "room_chat/index"
   root "static_pages#home"
   mount ActionCable.server => "/cable"
 
@@ -29,6 +29,12 @@ Rails.application.routes.draw do
 
   resource :review_blocked_users, only: :show do
     get :react
+  end
+
+  resources :review_liked_me, only: %i(show index) do
+    collection do
+      get :react
+    end
   end
 
   devise_for :users, controllers: {
