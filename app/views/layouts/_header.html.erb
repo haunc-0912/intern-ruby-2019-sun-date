@@ -8,8 +8,8 @@
       </div>
       <div class="top-menu">
         <ul class="nav navbar-nav pull-right">
-          <% unless current_user %>
-            <%= link_to login_path do %>
+          <% unless signed_in? %>
+            <%= link_to sign_in_path do %>
               <button type="button" class="btn green uppercase">
                 <%= t "login.title" %>
               </button>
