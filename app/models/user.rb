@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable,
-  :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+    :recoverable, :rememberable, :trackable, :validatable,
+    :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   VALID_EMAIL_REGEX = Settings.validates.valid_email
   enum role: {normal: 0, admin: 1}
@@ -31,22 +31,15 @@ class User < ApplicationRecord
   foreign_key: "recipient_id", dependent: :destroy
   has_many :owners, through: :passive_notifications, source: :owner
 
-  validates :name, presence: true, length:
-  {maximum: Settings.validates.max_name}
-  validates :email, presence: true, length:
-  {maximum: Settings.validates.max_email}, format:
-  {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
-  validates :address, presence: true, length:
-  {maximum: Settings.validates.max_address}
-  validates :gender, presence: true
-  validates :birthday, presence: true
-  validates :company, presence: true, length:
-  {maximum: Settings.validates.max_company}
-  validates :password, presence: true, length:
-  {minimum: Settings.validates.min_pass}
+  validates :name, presence: true, length: {maximum: Settings.validates.max_name}
+  validates :email, presence: true, length: {maximum: Settings.validates.max_email},
+            format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
+  validates :address, length: {maximum: Settings.validates.max_address}
+  validates :company, length: {maximum: Settings.validates.max_company}
+  validates :password, presence: true, length: {minimum: Settings.validates.min_pass}
 
   def self.new_with_session params, session
-    super.tap do |user|
+    tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end

@@ -1,5 +1,6 @@
 en:
-  hello: "Hello world"
+  hello: "Hello"
+  welcome: "Welcome to perfect date!!!"
   login:
     title: "Login"
     label:
@@ -15,6 +16,9 @@ en:
     title: "Forget Password?"
     hint: "Enter your e-mail address below to reset your password."
     email: "Email"
+  change_pass:
+    title: "Change Password"
+    hint: "Enter your new password. Password must have >= 6 characters."
   signup:
     title: "Sign Up"
     enter_per_info: "Enter your personal details below:"
@@ -89,5 +93,10 @@ en:
     prefer_gender: "Prefer Gender"
   google:
     flash:
-      error: "Có lỗi xảy ra"
+      error: "Error happened"
       success: "Login successful"
+  mailer:
+    text1: "Someone has requested a link to change your password. You can do this through the link below."
+    text2: "If you didn't request this, please ignore this email."
+    text3: "Your password won't change until you access the link above and create a new one."
+    change_pass: "Change my password"
