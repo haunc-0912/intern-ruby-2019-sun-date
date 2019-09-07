@@ -8,7 +8,7 @@ validates:
   valid_email: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
   max_company: 50
   max_alt: 20
-  max_location: 100
+  max_location: 255
   max_distance: 200
   max_age: 100
   max_description: 5000
@@ -20,3 +20,7 @@ validate:
   VALID_EMAIL_REGEX: !ruby/regexp '/\A[^@\s]+@[^@\s]+\z/'
 fb: "Facebook"
 gg: "Google"
+gender:
+  male: 1
+  female: 2
+  both_gender: 3

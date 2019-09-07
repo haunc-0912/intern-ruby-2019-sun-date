@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root "static_pages#home"
 
+  resource :dating_criterias, only: %i(edit update)
+  get "dating_criterias/search_location", to: "dating_criterias#search_location"
+
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations",

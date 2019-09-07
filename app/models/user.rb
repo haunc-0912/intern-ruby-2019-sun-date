@@ -6,6 +6,8 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.validates.valid_email
   enum role: {normal: 0, admin: 1}
 
+  has_one :dating_information, dependent: :destroy
+  accepts_nested_attributes_for :dating_information
   has_many :images, dependent: :destroy
   has_many :active_messages, class_name: Message.name,
   foreign_key: "sender_id", dependent: :destroy
@@ -36,7 +38,7 @@ class User < ApplicationRecord
             format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :address, length: {maximum: Settings.validates.max_address}
   validates :company, length: {maximum: Settings.validates.max_company}
-  validates :password, presence: true, length: {minimum: Settings.validates.min_pass}
+  validates :password, presence: true, length: {minimum: Settings.validates.min_pass}, allow_nil: true
 
   class << self
     def new_with_session params, session
