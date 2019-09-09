@@ -35,6 +35,7 @@ en:
     company: "Company"
     male: "Male"
     female: "Female"
+    both_gender: "All Gender"
   button:
     back: "Back"
     submit: "Submit"
@@ -93,6 +94,10 @@ en:
     distance: "Dating Distance"
     age_range: "Age Range"
     prefer_gender: "Prefer Gender"
+  set_criteria:
+    title: "Set Citeria"
+    desc: "Set your dating citeria to get approriate suggestions."
+    search_location: "Search for a location"
   google:
     flash:
       error: "Error happened"
@@ -102,3 +107,7 @@ en:
     text2: "If you didn't request this, please ignore this email."
     text3: "Your password won't change until you access the link above and create a new one."
     change_pass: "Change my password"
+  flash:
+    no_account: "No such account!"
+    update_success: "Update Success!"
+    update_fail: "Update Failed!"

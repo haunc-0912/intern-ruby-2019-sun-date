@@ -1,10 +1,19 @@
 $(document).on('turbolinks:load', function () {
   var ageSlider = document.getElementById('age_slider');
-  var startAge = $('#start_age');
-  var endAge = $('#end_age');
+  var startAge = $('#user_dating_information_attributes_start_age');
+  var endAge = $('#user_dating_information_attributes_end_age');
+
   if(ageSlider) {
+    let v1 = startAge.val();
+    let v2 = endAge.val();
+
+    if (!v1 || !v2) {
+      v1 = 20;
+      v2 = 50;
+    }
+
     noUiSlider.create(ageSlider, {
-      start: [20, 50],
+      start: [v1, v2],
       tooltips: true,
       format: wNumb({
         decimals: 0

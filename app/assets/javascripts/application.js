@@ -10,7 +10,7 @@
 //= require bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
 //= require jquery-slimscroll/jquery.slimscroll.min.js
 //= require jquery-validation/js/jquery.validate.min.js
-//= require select2/js/select2.full.min.js
+//= require select2-full
 //= require jquery.blockui.min.js
 //= require js.cookie.min.js
 //= require global/app.min.js
