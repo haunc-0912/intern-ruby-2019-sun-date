@@ -129,3 +129,18 @@ en:
     flash:
       error: "Error happened"
       success: "Set dating successful"
+  review_dislike:
+    title: "Reviewing users were disliked"
+    button:
+      unlike: "Unlike"
+      like: "Like"
+      block: "Block"
+    header:
+      user_profile: "User Profile"
+      general_information: "General Infomation"
+      description: "Description"
+      image: "Image"
+    sub_header:
+      name: "Name: "
+      address: "Address: "
+      birthday: "Birthday: "
