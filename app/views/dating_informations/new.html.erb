@@ -44,7 +44,13 @@
                 </div>
                 <div class="form-group">
                   <label class="bold">
-                      <%= t "signup.address" %>
+                    <%= t "signup.avatar" %>
+                  </label>
+                  <%= f.file_field :avatar, placeholder: t("login.label.password_confirm"), class: "form-control form-control-solid placeholder-no-fix" %>
+                </div>
+                <div class="form-group">
+                  <label class="bold">
+                    <%= t "signup.address" %>
                   </label>
                   <%= f.text_field :address, class: "form-control" %>
                 </div>

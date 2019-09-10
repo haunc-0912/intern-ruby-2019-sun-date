@@ -4,7 +4,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   VALID_EMAIL_REGEX = Settings.validates.valid_email
-  USER_PARAMS = ([:birthday, :address, :company, dating_information_attributes: [:height, :weight, :description]]).freeze
+  USER_PARAMS = [:birthday, :avatar, :address, :company, dating_information_attributes: [:height, :weight, :description]].freeze
 
   enum role: {normal: 0, admin: 1}
 
@@ -39,6 +39,8 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :dating_information
 
+  mount_uploader :avatar, ImageUploader
+
   validates :name, presence: true, length: {maximum: Settings.validates.max_name}, allow_nil: true
   validates :email, presence: true, length: {maximum: Settings.validates.max_email},
             format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}, allow_nil: true
@@ -60,7 +62,7 @@ class User < ApplicationRecord
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
         user.name = auth.info.name
-        user.image = auth.info.avatar
+        user.image_sc = auth.info.image
       end
     end
   end

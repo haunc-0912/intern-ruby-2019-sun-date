@@ -36,6 +36,7 @@ en:
     male: "Male"
     female: "Female"
     both_gender: "All Gender"
+    avatar: "Avatar"
   button:
     back: "Back"
     submit: "Submit"
