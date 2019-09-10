@@ -7,5 +7,6 @@ FactoryBot.define do
     start_age { FFaker::Random.rand 15..20 }
     end_age { FFaker::Random.rand 21..50 }
     description { FFaker::Lorem.paragraph }
+    user_id {FactoryBot.create(:user).id}
   end
 end

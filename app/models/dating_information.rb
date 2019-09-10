@@ -7,15 +7,16 @@ class DatingInformation < ApplicationRecord
 
   validates :height, numericality: {greater_than: Settings.zero}, allow_nil: true
   validates :weight, numericality: {greater_than: Settings.zero}, allow_nil: true
-  validates :dating_location, presence: true, length: {maximum: Settings.validates.max_location}
-  validates :dating_distance, presence: true, numericality: {greater_than: Settings.zero, less_than: Settings.validates.max_distance}
-  validates :start_age, presence: true, numericality: {greater_than: Settings.zero, less_than: Settings.validates.max_age}
-  validates :end_age, presence: true, numericality: {greater_than: Settings.zero, less_than: Settings.validates.max_age}
+  validates :dating_location, presence: true, length: {maximum: Settings.validates.max_location}, allow_nil: true
+  validates :dating_distance, presence: true, numericality: {greater_than: Settings.zero, less_than: Settings.validates.max_distance}, allow_nil: true
+  validates :start_age, presence: true, numericality: {greater_than: Settings.zero, less_than: Settings.validates.max_age}, allow_nil: true
+  validates :end_age, presence: true, numericality: {greater_than: Settings.zero, less_than: Settings.validates.max_age}, allow_nil: true
   validates :description, length: {maximum: Settings.validates.max_description}
+
   validate :start_age_cannot_be_greater_than_end_age
 
   def start_age_cannot_be_greater_than_end_age
-    return unless start_age > end_age
+    return unless (start_age.present? && end_age.present? && start_age > end_age)
 
     errors.add(:start_age, "start_age can't greater than end_age")
   end

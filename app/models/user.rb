@@ -1,9 +1,11 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable,
-    :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   VALID_EMAIL_REGEX = Settings.validates.valid_email
+  USER_PARAMS = ([:birthday, :address, :company, dating_information_attributes: [:height, :weight, :description]]).freeze
+
   enum role: {normal: 0, admin: 1}
 
   has_one :dating_information, dependent: :destroy
@@ -33,9 +35,13 @@ class User < ApplicationRecord
   foreign_key: "recipient_id", dependent: :destroy
   has_many :owners, through: :passive_notifications, source: :owner
 
-  validates :name, presence: true, length: {maximum: Settings.validates.max_name}
+  has_one :dating_information, dependent: :destroy
+
+  accepts_nested_attributes_for :dating_information
+
+  validates :name, presence: true, length: {maximum: Settings.validates.max_name}, allow_nil: true
   validates :email, presence: true, length: {maximum: Settings.validates.max_email},
-            format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
+            format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}, allow_nil: true
   validates :address, length: {maximum: Settings.validates.max_address}
   validates :company, length: {maximum: Settings.validates.max_company}
   validates :password, presence: true, length: {minimum: Settings.validates.min_pass}, allow_nil: true

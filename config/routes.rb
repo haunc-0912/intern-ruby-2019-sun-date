@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "static_pages#home"
 
+  resources :dating_informations
   resource :dating_criterias, only: %i(edit update)
   get "dating_criterias/search_location", to: "dating_criterias#search_location"
 
