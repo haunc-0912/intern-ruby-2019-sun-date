@@ -40,6 +40,7 @@ en:
     back: "Back"
     submit: "Submit"
     cancel: "Cancel"
+    set_criteria: "Set dating criteria"
   validates:
     check_age: "can't be greater than end_age"
   base:
@@ -107,6 +108,16 @@ en:
     text2: "If you didn't request this, please ignore this email."
     text3: "Your password won't change until you access the link above and create a new one."
     change_pass: "Change my password"
+  action:
+    like: "Like"
+    dislike: "Dislike"
+    block: "Block"
+  suggestion:
+    title: "Dating Suggestions"
+    user_pro: "User Profile"
+    general_info: "General Information"
+    desc: "Description"
+    images: "Images"
   flash:
     no_account: "No such account!"
     update_success: "Update Success!"

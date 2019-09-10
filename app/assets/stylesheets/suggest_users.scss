@@ -1,0 +1,25 @@
+.profile-sidebar-portlet {
+  padding-bottom: 35px!important;
+}
+
+.information {
+  padding: 0 20px;
+  margin-bottom: 15px;
+}
+
+.page-head {
+  .page-head__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    .page-title {
+      float: none;
+      padding: 0;
+    }
+  }
+}
+
+.btn-edit-criteria {
+  margin-right: 35px;
+}
