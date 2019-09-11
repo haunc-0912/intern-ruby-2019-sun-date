@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     get "reset_password", to: "users/passwords#new"
     get "sign_up", to: "users/registrations#new"
   end
+
+  get "review", to: "reviewed_dislike_users#review_disliked_users"
 end

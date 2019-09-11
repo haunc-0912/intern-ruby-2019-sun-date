@@ -2,7 +2,7 @@
   <div class="page-header-top">
     <div class="container">
       <div class="page-logo">
-        <%= link_to "", href:"#", id:"logo" do %>
+        <%= link_to root_path, id: "logo" do %>
           <%= image_tag "logo_perfect.png" %>
         <% end %>
       </div>
@@ -188,8 +188,8 @@
           <li>
             <%= link_to t "header.sub-menu.match", herf:"#" %>
           </li>
-          <li class="menu-dropdown mega-menu-dropdown ">
-            <%= link_to t("header.sub-menu.review") %>
+          <li class="menu-dropdown mega-menu-dropdown  ">
+            <%= link_to t("header.sub-menu.review"), reviewed_disliked_users_path %>
           </li>
         </ul>
       </div>
