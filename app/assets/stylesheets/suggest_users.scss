@@ -5,6 +5,12 @@
 .information {
   padding: 0 20px;
   margin-bottom: 15px;
+  &-label {
+    font-weight: 800;
+    &:after {
+      content: ': ';
+    }
+  }
 }
 
 .page-head {
@@ -22,4 +28,12 @@
 
 .btn-edit-criteria {
   margin-right: 35px;
+}
+
+.image-list {
+  .image_item {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
 }

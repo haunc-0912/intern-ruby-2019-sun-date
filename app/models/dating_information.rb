@@ -1,6 +1,7 @@
 class DatingInformation < ApplicationRecord
   after_validation :geocode, if: :dating_location_changed?
   enum status: {deactive: 0, active: 1}
+  enum prefer_gender: {male: 0, female: 1, both: 2}
 
   geocoded_by :dating_location
   belongs_to :user

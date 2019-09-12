@@ -21,4 +21,5 @@
 //= require page/login.min.js
 //= require layout/layout.min.js
 //= require wNumb.js
+//= require toastr
 //= require_tree .

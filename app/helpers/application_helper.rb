@@ -8,4 +8,12 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def format_date date
+    l date
+  end
+
+  def calculate_age date
+    ((Time.zone.now - date.to_time) / 1.year.seconds).floor
+  end
 end

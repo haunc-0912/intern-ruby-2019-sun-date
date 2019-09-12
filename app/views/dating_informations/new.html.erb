@@ -21,9 +21,12 @@
                   <%= t "setdating.desc" %>
                 </p>
                 <div class="form-group">
-                  <label class="control-label visible-ie8 visible-ie9">
+                  <label class="bold">
                     <%= t "signup.gender" %>
                   </label>
+                  <%= f.select :gender, options_for_select(@list_gender, selected: f.object.gender), {}, {class: "form-control"} %>
+                </div>
+                <div class="form-group">
                   <label class="bold">
                     <%= t "signup.birthday" %>
                   </label>

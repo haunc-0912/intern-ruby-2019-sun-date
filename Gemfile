@@ -28,6 +28,7 @@ gem "geocoder", "~> 1.5", ">= 1.5.1"
 gem "select2-rails"
 gem "carrierwave"
 gem "mini_magick"
+gem "toastr-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

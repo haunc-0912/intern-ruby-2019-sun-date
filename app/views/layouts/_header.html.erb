@@ -17,7 +17,7 @@
           <% else %>
             <%= link_to "", href:"#", class:"menu-toggler" %>
             <li class="dropdown dropdown-user dropdown-dark">
-              <%= link_to "", href:"#", class:"dropdown-toggle", data: {toggle: "dropdown", hover: "dropdown", "close-others": "true"} do %>
+              <%= link_to "", href: "#", class: "dropdown-toggle", data: {toggle: "dropdown", hover: "dropdown", "close-others": "true"} do %>
                 <% if current_user.avatar.present? %>
                   <%= image_tag current_user.avatar.url, class: "img-circle" %>
                 <% elsif current_user.image_sc.present? %>
@@ -25,9 +25,9 @@
                 <% end %>
                 <span class="username username-hide-mobile"><%= current_user[:name] %></span>
               <% end %>
-                <ul class="dropdown-menu dropdown-menu-default">
-                  <li>
-                    <%= link_to new_dating_information_path do %>
+              <ul class="dropdown-menu dropdown-menu-default">
+                <li>
+                  <%= link_to new_dating_information_path do %>
                     <i class="fa fa-user-o"></i> <%= t "header.menu.profile" %>
                     <% end %>
                   </li>
@@ -63,10 +63,10 @@
             <%= link_to t("header.sub-menu.suggestion"), suggest_users_path %>
           </li>
           <li>
-            <%= link_to t "header.sub-menu.match", herf:"#" %>
+            <%= link_to t "header.sub-menu.match", herf: "#" %>
           </li>
           <li class="menu-dropdown mega-menu-dropdown  ">
-            <%= link_to t("header.sub-menu.review"), reviewed_disliked_users_path %>
+            <%= link_to t("header.sub-menu.review"), review_path %>
           </li>
         </ul>
       </div>

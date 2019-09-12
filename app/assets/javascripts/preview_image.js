@@ -1,20 +1,20 @@
-$(function(){
-  $(".upload-image").on("change", function(){
+$(document).on('turbolinks:load', function () {
+  $('.upload-image').on('change', function () {
     var preview = document.querySelector('#preview');
-    var files   = document.querySelector('input[type=file]').files;
+    var files = document.querySelector('input[type=file]').files;
 
     function readAndPreview(file) {
 
-      if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+      if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
         var reader = new FileReader();
 
-        reader.addEventListener("load", function () {
+        reader.addEventListener('load', function () {
           var image = new Image();
           image.height = 250;
           image.width = 230;
           image.title = file.name;
           image.src = this.result;
-          preview.appendChild( image );
+          preview.appendChild(image);
         }, false);
 
         reader.readAsDataURL(file);
@@ -26,4 +26,4 @@ $(function(){
       [].forEach.call(files, readAndPreview);
     }
   })
-})
+});
