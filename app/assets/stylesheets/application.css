@@ -18,6 +18,7 @@
  *= require layout.min.css
  *= require default.min.css
  *= require nouislider
+ *= require toastr
  *= require_tree .
  *= require_self
  */

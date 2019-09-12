@@ -21,6 +21,10 @@ validate:
 fb: "Facebook"
 gg: "Google"
 gender:
-  male: 1
-  female: 2
-  both_gender: 3
+  male: "male"
+  female: "female"
+  both: "both"
+reaction:
+  like: "like"
+  dislike: "dislike"
+  block: "block"

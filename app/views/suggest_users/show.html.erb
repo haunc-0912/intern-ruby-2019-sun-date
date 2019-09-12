@@ -15,82 +15,12 @@
       </div>
     </div>
     <div class="page-content margin-bottom-25">
-      <div class="page-content-inner">
-        <div class="profile-sidebar">
-          <div class="portlet light profile-sidebar-portlet">
-            <div class="profile-userpic">
-              <%= image_tag "profile_user.jpg", class: "img-responsive" %>
-            </div>
-            <div class="profile-usertitle">
-              <div class="profile-usertitle-name">Marcus Doe</div>
-              <div class="profile-usertitle-job">Age: 22</div>
-            </div>
-            <div class="profile-userbuttons">
-              <div class="btn-group btn-group btn-group-justified">
-                <%= link_to t("action.like"), "#", class: "btn btn-success" %>
-                <%= link_to t("action.dislike"), "#", class: "btn red" %>
-                <%= link_to t("action.block"), "#", class: "btn grey-cascade" %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="app-ticket app-ticket-list">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="portlet light ">
-                <div class="portlet-title tabbable-line">
-                  <div class="caption caption-md">
-                    <i class="icon-globe theme-font hide"></i>
-                    <span class="caption-subject font-blue-madison bold uppercase">
-                      <%= t "suggestion.user_pro" %>
-                    </span>
-                  </div>
-                </div>
-                <div class="portlet-body">
-                  <div class="dataTables_wrapper no-footer">
-                    <div class="note note-info note-bordered">
-                      <%= t "suggestion.general_info" %>
-                    </div>
-                    <div class="information">
-                        <span class="bold">
-                          <%= t "signup.name" %>
-                        </span>
-                      <span class="information-item">
-                          Hiep Giao Su
-                        </span>
-                    </div>
-                    <div class="information">
-                        <span class="bold">
-                          <%= t "signup.address" %>
-                        </span>
-                      <span class="information-item">
-                          Ha Noi
-                        </span>
-                    </div>
-                    <div class="information">
-                        <span class="bold">
-                          <%= t "signup.birthday" %>
-                        </span>
-                      <span class="information-item">
-                          10/10/1955
-                        </span>
-                    </div>
-
-                    <div class="note note-info note-bordered">
-                      <%= t "suggestion.desc" %>
-                    </div>
-                    <div class="information">
-                      Hello, iam giao su
-                    </div>
-                    <div class="note note-info note-bordered">
-                      <%= t "suggestion.images" %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="page-content-inner" id="content-inner">
+        <% if @user %>
+          <%= render "user", user: @user %>
+        <% else %>
+          <%= render "no_results" %>
+      <% end %>
       </div>
     </div>
   </div>

@@ -4,10 +4,11 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   VALID_EMAIL_REGEX = Settings.validates.valid_email
-  USER_PARAMS = [:birthday, :avatar, :address, :company, dating_information_attributes: [:height, :weight, :description]].freeze
+  USER_PARAMS = [:gender, :birthday, :avatar, :address, :company, dating_information_attributes: [:height, :weight, :description]].freeze
   USER_IMAGE_PARAMS = [image_attributes: [:link]].freeze
 
   enum role: {normal: 0, admin: 1}
+  enum gender: {male: 0, female: 1, both: 2}
 
   has_many :images, dependent: :destroy
   
@@ -21,11 +22,11 @@ class User < ApplicationRecord
 
   has_many :active_reactions, class_name: Reaction.name,
   foreign_key: "active_user_id", dependent: :destroy
-  has_many :passive_users, through: :active_reactions, source: :passive_user
+  has_many :reactings, through: :active_reactions, source: :passive_user
 
   has_many :passive_reactions, class_name: Reaction.name,
   foreign_key: "passive_user_id", dependent: :destroy
-  has_many :active_users, through: :passive_reactions, source: :active_user
+  has_many :reacters, through: :passive_reactions, source: :active_user
 
   has_many :active_notifications, class_name: Notification.name,
   foreign_key: "owner_id", dependent: :destroy
@@ -36,8 +37,8 @@ class User < ApplicationRecord
   has_many :owners, through: :passive_notifications, source: :owner
 
   has_one :dating_information, dependent: :destroy
+  accepts_nested_attributes_for :dating_information, update_only: true
 
-  accepts_nested_attributes_for :dating_information
   accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |attributes| attributes["image"].blank? }
 
   mount_uploader :avatar, ImageUploader
@@ -48,6 +49,40 @@ class User < ApplicationRecord
   validates :address, length: {maximum: Settings.validates.max_address}
   validates :company, length: {maximum: Settings.validates.max_company}
   validates :password, presence: true, length: {minimum: Settings.validates.min_pass}, allow_nil: true
+
+  scope :by_status_reactings, -> (status){where id: Reaction.where(passive_user_id: self.pluck(:id), status: status).pluck(:passive_user_id)}
+  scope :by_status_reacters, -> (status){where id: Reaction.where(active_user_id: self.pluck(:id), status: status).pluck(:active_user_id)}
+  scope :by_no_reaction, -> (current_user_id) {where.not id: Reaction.where(active_user_id: current_user_id).pluck(:passive_user_id)}
+  scope :active, -> {where id: DatingInformation.active.where(user_id: self.pluck(:id))}
+  scope :by_no_block, ->(current_user_id) {where.not id: Reaction.block.where(passive_user_id: current_user_id).pluck(:active_user_id)}
+  scope :by_distance, ->(user, distance) {where id: DatingInformation.near(user.dating_information, distance).map(&:user_id)}
+  scope :by_age_range, ->(start_age, end_age) {where birthday: end_age.years.ago..start_age.years.ago}
+
+  scope :by_prefer_gender, ->(gender) do
+    send("#{gender}") unless gender == Settings.gender.both
+  end
+
+  scope :get_suggest_user, ->(current_user) do
+    active.by_prefer_gender(current_user.dating_information.prefer_gender)
+      .by_no_reaction(current_user.id).by_no_block(current_user.id)
+      .by_age_range(current_user.dating_information.start_age, current_user.dating_information.end_age)
+      .by_distance(current_user, current_user.dating_information.dating_distance)
+      .where.not id: current_user.id
+  end
+
+  Reaction.statuses.keys.each do |action|
+    define_method action do |other_user|
+      if react = Reaction.find_by(active_user_id: id, passive_user_id: other_user.id)
+        react.update status: "#{action}"
+      else
+        Reaction.create!(
+          active_user_id: id,
+          passive_user_id: other_user.id,
+          status: "#{action}"
+        )
+      end
+    end
+  end
 
   class << self
     def new_with_session params, session

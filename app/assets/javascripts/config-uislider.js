@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', function () {
       }),
       range: {
         'min': 18,
-        'max': 70
+        'max': 100
       }
     });
 

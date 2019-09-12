@@ -1,0 +1,12 @@
+<% if @react == "like" %>
+  toastr.success('<%= t "flash.you_like" %><%= @pass_user.name %>','<%= t "flash.like" %>');
+<% elsif @react == "dislike" %>
+  toastr.error('<%= t "flash.you_dislike" %><%= @pass_user.name %>','<%= t "flash.dislike" %>');
+<% else %>
+  toastr.info('<%= t "flash.you_block" %><%= @pass_user.name %>','<%= t "flash.block" %>');
+<% end %>
+<% if @user_next %>
+  $('#content-inner').html('<%= j render "user", user: @user_next %>');
+<% else %>
+  $('#content-inner').html('<%= j render "no_results" %>');
+<% end %>
