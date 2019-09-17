@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = Settings.validates.valid_email
   USER_PARAMS = [:gender, :birthday, :avatar, :address, :company, dating_information_attributes: [:height, :weight, :description]].freeze
-  USER_IMAGE_PARAMS = [image_attributes: [:link]].freeze
+  USER_IMAGE_PARAMS = [images_attributes: [:link]].freeze
 
   enum role: {normal: 0, admin: 1}
   enum gender: {male: 0, female: 1, both: 2}
@@ -50,6 +50,19 @@ class User < ApplicationRecord
   validates :address, length: {maximum: Settings.validates.max_address}
   validates :company, length: {maximum: Settings.validates.max_company}
   validates :password, presence: true, length: {minimum: Settings.validates.min_pass}, allow_nil: true
+  validate :age_can_not_be_less_than_18
+
+  private
+
+  def calculate_age date
+    ((Time.zone.now - date.to_time) / 1.year.seconds).floor
+  end
+
+  def age_can_not_be_less_than_18
+    return unless (birthday.present? &&  (calculate_age birthday) < 18)
+
+    errors.add(:birthday, ": you are not enough age to use app, you must be greater than or equal 18 ")
+  end
 
   scope :by_status_reactings, -> (status){where id: Reaction.where(passive_user_id: self.pluck(:id), status: status).pluck(:passive_user_id)}
   scope :by_status_reacters, -> (status){where id: Reaction.where(active_user_id: self.pluck(:id), status: status).pluck(:active_user_id)}
@@ -58,6 +71,7 @@ class User < ApplicationRecord
   scope :by_no_block, ->(current_user_id) {where.not id: Reaction.block.where(passive_user_id: current_user_id).pluck(:active_user_id)}
   scope :by_distance, ->(user, distance) {where id: DatingInformation.near(user.dating_information, distance).map(&:user_id)}
   scope :by_age_range, ->(start_age, end_age) {where birthday: end_age.years.ago..start_age.years.ago}
+  scope :info_user_match, -> (user_id){ where id: (Reaction.matches user_id ).pluck(:passive_user_id)}
 
   scope :by_prefer_gender, ->(gender) do
     send("#{gender}") unless gender == Settings.gender.both
@@ -110,6 +124,10 @@ class User < ApplicationRecord
         user.name = auth.info.name
         user.image_sc = auth.info.image
       end
+    end
+
+    def ransackable_scopes auth_object = nil
+      %i(info_user_match)
     end
   end
 end

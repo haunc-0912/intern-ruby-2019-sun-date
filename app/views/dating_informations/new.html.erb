@@ -16,6 +16,7 @@
             </div>
             <div class="portlet-body">
               <%= form_for @user, url: dating_informations_path, html: {method: :post, class: "register-form"} do |f| %>
+              <%= render "devise/shared/error_messages", resource: @user %>
               <form class="register-form" action="index.html" method="post">
                 <p class="hint">
                   <%= t "setdating.desc" %>

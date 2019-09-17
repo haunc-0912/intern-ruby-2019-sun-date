@@ -1,0 +1,137 @@
+<div class="profile-sidebar">
+  <div class="portlet light profile-sidebar-portlet">
+    <div class="profile-userpic">
+      <% if @user.avatar.present? %>
+        <%= image_tag user.avatar.url, class: "img-responsive" %>
+      <% elsif @user.image_sc.present? %>
+        <%= image_tag @user.image_sc, class: "img-responsive" %>
+      <% end %>
+    </div>
+    <div class="profile-usertitle">
+      <div class="profile-usertitle-name">
+        <%= @user.name %>
+      </div>
+      <div class="profile-usertitle-job">
+        <%= t "suggestion.age" %>
+        <%= calculate_age @user.birthday %>
+      </div>
+    </div>
+    <div class="profile-userbuttons">
+      <div class="btn-group btn-group btn-group-justified">
+        <div class="col-md-6"> <%= link_to t("action.block"), react_suggest_users_path(passive_user_id: @user.id, react: :block), class: "btn grey-cascade", remote: true %></div>
+        <div class="col-md-6"><button class="btn btn-success btn-lg" ><i class="fa fa-wechat"></i></button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="app-ticket app-ticket-list">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="portlet light ">
+        <div class="portlet-title tabbable-line">
+          <div class="caption caption-md">
+            <i class="icon-globe theme-font hide"></i>
+            <span class="caption-subject font-blue-madison bold uppercase">
+              <%= t "suggestion.user_pro" %>
+            </span>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <div class="dataTables_wrapper no-footer">
+            <div class="note note-info note-bordered">
+              <%= t "suggestion.general_info" %>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="information">
+                  <span class="information-label">
+                    <%= t "signup.name" %>
+                  </span>
+                  <span class="information-item">
+                    <%= @user.name %>
+                  </span>
+                </div>
+                <div class="information">
+                  <span class="information-label">
+                    <%= t "signup.gender" %>
+                  </span>
+                  <span class="information-item text-capitalize">
+                    <%= @user.gender %>
+                  </span>
+                </div>
+                <div class="information">
+                  <span class="information-label">
+                    <%= t "signup.dating_address" %>
+                  </span>
+                  <span class="information-item">
+                    <%= @user.dating_information.dating_location %>
+                  </span>
+                </div>
+                <div class="information">
+                  <span class="information-label">
+                    <%= t "signup.company" %>
+                  </span>
+                  <span class="information-item">
+                    <%= @user.company %>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="information">
+                  <span class="information-label">
+                    <%= t "setdating.birthday" %>
+                  </span>
+                  <span class="information-item">
+                    <%= format_date @user.birthday %>
+                  </span>
+                </div>
+                <div class="information">
+                  <span class="information-label">
+                    <%= t "setdating.height" %>
+                  </span>
+                  <span class="information-item">
+                    <%= @user.dating_information.height %>
+                    <%= Settings.cm %>
+                  </span>
+                </div>
+                <div class="information">
+                  <span class="information-label">
+                    <%= t "setdating.weight" %>
+                  </span>
+                  <span class="information-item">
+                    <%= @user.dating_information.weight %>
+                    <%= Settings.kg %>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="note note-info note-bordered">
+              <%= t "suggestion.desc" %>
+            </div>
+            <div class="information">
+              <%= @user.dating_information.description %>
+            </div>
+            <div class="note note-info note-bordered">
+              <%= t "suggestion.images" %>
+            </div>
+            <div class="row image-list">
+              <% if @user.images.size > Settings.zero %>
+                <% @user.images.each do |img| %>
+                  <div class="col-md-4">
+                    <%= image_tag img.link.url, class: "image_item" %>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="col-md-12">
+                  <div class="information">
+                    <%= t "flash.no_images" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

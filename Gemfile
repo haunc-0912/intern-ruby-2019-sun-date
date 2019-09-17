@@ -30,6 +30,8 @@ gem "carrierwave"
 gem "mini_magick"
 gem "toastr-rails"
 gem "public_activity"
+gem "ransack"
+gem "flex-slider-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

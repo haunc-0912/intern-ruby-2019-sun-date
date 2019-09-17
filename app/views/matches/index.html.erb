@@ -1,0 +1,58 @@
+<% content_for :body_class, "page-container-bg-solid" %>
+
+<div class="page-content">
+  <div class="container">
+    <div class="page-content-inner">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+              <div class="caption caption-md">
+                <i class="icon-globe theme-font hide"></i>
+                <span class="caption-subject font-blue-madison bold uppercase">
+                  <%= t "match.name" %>
+                </span>
+              </div>
+            </div>
+            <div class="portlet-body">
+              <%= render "form" %>
+              <hr>
+              <div class="row">
+                <% @users.each do |user| %>
+                  <div class="col-md-6">
+                    <div class="col-md-8" > 
+                      <%= link_to user.name, match_path(user)%> </div>
+                    <button class="btn btn-success btn-xs btn-chat" > <i class="fa fa-wechat"></i></button>
+                    <div class="flexslider">
+                      <ul class="slides">
+                        <% user.images.all.each do |img| %>                         
+                          <li>
+                            <%= image_tag img.link.url, class: "images img_slide"%>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+              <div class="caption caption-md">
+                <i class="icon-globe theme-font hide"></i>
+                <span class="caption-subject font-blue-madison bold uppercase">
+                  <%= t "match.chat" %>
+                </span>
+              </div>
+            </div>
+            <div class="row">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
