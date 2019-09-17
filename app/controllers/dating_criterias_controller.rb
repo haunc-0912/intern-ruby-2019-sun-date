@@ -11,22 +11,24 @@ class DatingCriteriasController < ApplicationController
 
   def edit
     @user.build_dating_information unless @user.dating_information.present?
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update
-    if @user.update user_params
-      flash[:info] = t "flash.update_success"
-      redirect_to edit_dating_criterias_path
-    else
-      flash[:danger] = t "flash.update_fail"
-      render :edit
-    end
+    @success = @user.update user_params
+    @user_next = User.get_suggest_user(@user).first
+
+    respond_to :js
   end
 
   private
 
   def user_params
-    params.require(:user).permit dating_information_attributes: %i(prefer_gender start_age end_age dating_location dating_distance)
+    params.require(:user).permit DatingInformation::DATING_INFOR_PARAMS
   end
 
   def load_user

@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () {
+function initRangeSlider() {
   var ageSlider = document.getElementById('age_slider');
   var startAge = $('#user_dating_information_attributes_start_age');
   var endAge = $('#user_dating_information_attributes_end_age');
@@ -30,4 +30,6 @@ $(document).on('turbolinks:load', function () {
       endAge.val(valueList[1]);
     });
   }
-});
+}
+
+$(document).on('turbolinks:load', initRangeSlider);

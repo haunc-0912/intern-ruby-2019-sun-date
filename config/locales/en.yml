@@ -140,6 +140,7 @@ en:
     update: "Update "
     no_suggest_users: "Don't have anymore people with your dating citerial. Update your dating citerial for more suggestions."
     no_images: "Don't have images."
+    date_citerial_updated: "Your dating citerial has been updated"
   notification:
     match: "match with"
     you: "you."

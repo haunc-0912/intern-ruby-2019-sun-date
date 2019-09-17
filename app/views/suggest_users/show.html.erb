@@ -10,7 +10,7 @@
               <%= t "suggestion.title" %>
             </h1>
           </div>
-          <%= link_to t("button.set_criteria"), edit_dating_criterias_path, class: "btn btn-primary btn-edit-criteria" %>
+          <%= link_to t("button.set_criteria"), edit_dating_criterias_path, remote: true, class: "btn btn-primary btn-edit-criteria" %>
         </div>
       </div>
     </div>
@@ -23,6 +23,7 @@
       <% end %>
       </div>
       <div id="modal-content"></div>
+      <%= render "modal_setting" %>
     </div>
   </div>
 </div>
