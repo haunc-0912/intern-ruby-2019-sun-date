@@ -42,6 +42,7 @@ en:
     submit: "Submit"
     cancel: "Cancel"
     set_criteria: "Set dating criteria"
+    yes: "Yes"
   validates:
     check_age: "can't be greater than end_age"
   base:
@@ -123,6 +124,8 @@ en:
     desc: "Description"
     images: "Images"
     age: "Age: "
+    match_title: "Congratulations! There is a match"
+    match_des: 'You match with %{obj}. Please send greetings to each other!!!'
   flash:
     no_account: "No such account!"
     update_success: "Update Success!"
@@ -137,6 +140,10 @@ en:
     update: "Update "
     no_suggest_users: "Don't have anymore people with your dating citerial. Update your dating citerial for more suggestions."
     no_images: "Don't have images."
+  notification:
+    match: "match with"
+    you: "you."
+    match_description: "Please send greetings!"
   dating:
     flash:
       error: "Error happened"

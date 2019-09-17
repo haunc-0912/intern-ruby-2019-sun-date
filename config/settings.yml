@@ -28,3 +28,7 @@ reaction:
   like: "like"
   dislike: "dislike"
   block: "block"
+noti_key:
+  like: "like"
+  dislike: "dislike"
+  match: "match"

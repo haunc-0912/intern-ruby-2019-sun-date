@@ -1,14 +1,3 @@
-# User.create!(
-#   email: "admin@mail.com",
-#   name: "Ho Ad Ten Min",
-#   password: "123456",
-#   password_confirmation: "123456",
-#   gender: 0,
-#   birthday: Time.zone.now - 22.years,
-#   address: FFaker::Address.street_address,
-#   company: FFaker::CompanyIT.name,
-#   role: 0
-# )
 User.create!(
   email: "admin@mail.com",
   name: "Ho Ad Ten Min",
@@ -19,6 +8,7 @@ User.create!(
   address: FFaker::Address.street_address,
   company: FFaker::CompanyIT.name,
   role: 0,
+  avatar: Rails.root.join("app/assets/images/img_1.jpg").open,
   dating_information_attributes: {
     height: Random.rand(160..190),
     weight: Random.rand(50..100),
@@ -28,7 +18,12 @@ User.create!(
     end_age: 50,
     prefer_gender: 2,
     description: FFaker::Lorem.sentence
-  }
+  },
+  images_attributes: [
+    {link: Rails.root.join("app/assets/images/img_1.jpg").open},
+    {link: Rails.root.join("app/assets/images/img_2.jpg").open},
+    {link: Rails.root.join("app/assets/images/img_3.jpg").open}
+  ]
 )
 
 User.create!(
@@ -41,6 +36,7 @@ User.create!(
   address: FFaker::Address.street_address,
   company: FFaker::CompanyIT.name,
   role: 0,
+  avatar: Rails.root.join("app/assets/images/profile_user.jpg").open,
   dating_information_attributes: {
     height: Random.rand(160..190),
     weight: Random.rand(50..100),
@@ -50,7 +46,12 @@ User.create!(
     end_age: 50,
     prefer_gender: 2,
     description: FFaker::Lorem.sentence
-  }
+  },
+  images_attributes: [
+    {link: Rails.root.join("app/assets/images/img_3.jpg").open},
+    {link: Rails.root.join("app/assets/images/img_5.jpg").open},
+    {link: Rails.root.join("app/assets/images/img_7.jpg").open}
+  ]
 )
 
 User.create!(
@@ -63,6 +64,7 @@ User.create!(
   address: FFaker::Address.street_address,
   company: FFaker::CompanyIT.name,
   role: 0,
+  avatar: Rails.root.join("app/assets/images/img_3.jpg").open,
   dating_information_attributes: {
     height: Random.rand(160..190),
     weight: Random.rand(50..100),
@@ -72,11 +74,17 @@ User.create!(
     end_age: 50,
     prefer_gender: 2,
     description: FFaker::Lorem.sentence
-  }
+  },
+  images_attributes: [
+    {link: Rails.root.join("app/assets/images/img_6.jpg").open},
+    {link: Rails.root.join("app/assets/images/img_5.jpg").open},
+    {link: Rails.root.join("app/assets/images/img_4.jpg").open}
+  ]
 )
 
 40.times do |n|
   location = ["Ha Noi, Viet Nam", "Ho Chi Minh", "Da Nang"].sample
+  k = Random.rand(1..7)
   u = User.create!(
     email: "user#{n + 1}@mail.com",
     name: FFaker::Name.unique.name,
@@ -87,6 +95,7 @@ User.create!(
     address: FFaker::Address.street_address,
     company: FFaker::CompanyIT.name,
     role: 0,
+    avatar: Rails.root.join("app/assets/images/img_#{k}.jpg").open,
     dating_information_attributes: {
       height: Random.rand(160..190),
       weight: Random.rand(50..100),
@@ -96,7 +105,12 @@ User.create!(
       end_age: Random.rand(35..70),
       prefer_gender: Random.rand(0..2),
       description: FFaker::Lorem.sentence
-    }
+    },
+    images_attributes: [
+      {link: Rails.root.join("app/assets/images/img_7.jpg").open},
+      {link: Rails.root.join("app/assets/images/img_2.jpg").open},
+      {link: Rails.root.join("app/assets/images/img_3.jpg").open}
+    ]
   )
 end
 
@@ -121,5 +135,13 @@ end
     active_user_id: 2,
     passive_user_id: n,
     status: :block
+  )
+end
+
+(10..20).each do |n|
+  Reaction.create!(
+    active_user_id: n,
+    passive_user_id: 2,
+    status: :like
   )
 end

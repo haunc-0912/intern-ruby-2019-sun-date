@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "static_pages#home"
+  mount ActionCable.server => "/cable"
 
   resources :dating_informations
   resources :images

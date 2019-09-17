@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include ApplicationHelper
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
@@ -39,7 +40,7 @@ class User < ApplicationRecord
   has_one :dating_information, dependent: :destroy
   accepts_nested_attributes_for :dating_information, update_only: true
 
-  accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |attributes| attributes["image"].blank? }
+  accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |attributes| attributes["link"].blank? }
 
   mount_uploader :avatar, ImageUploader
 
@@ -75,13 +76,22 @@ class User < ApplicationRecord
       if react = Reaction.find_by(active_user_id: id, passive_user_id: other_user.id)
         react.update status: "#{action}"
       else
-        Reaction.create!(
+        react = Reaction.create!(
           active_user_id: id,
           passive_user_id: other_user.id,
           status: "#{action}"
         )
       end
+      return react
     end
+  end
+
+  def is_match? other_user
+    active_react = Reaction.find_by active_user_id: id, passive_user_id: other_user.id
+    passive_react = Reaction.find_by active_user_id: other_user.id, passive_user_id: id
+
+    return false unless active_react && passive_react
+    active_react.status == passive_react.status && active_react.status == Settings.noti_key.like
   end
 
   class << self

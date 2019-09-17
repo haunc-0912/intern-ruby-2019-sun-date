@@ -37,3 +37,7 @@
     margin-bottom: 20px;
   }
 }
+
+.page-header .page-header-top .top-menu .navbar-nav>li.dropdown-extended .dropdown-menu .dropdown-menu-list {
+  overflow-y: scroll;
+}

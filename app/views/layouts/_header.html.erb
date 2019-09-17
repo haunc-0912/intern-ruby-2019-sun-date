@@ -16,6 +16,12 @@
             <% end %>
           <% else %>
             <%= link_to "", href:"#", class:"menu-toggler" %>
+            <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
+              <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" id="notification-counter">
+                <%= render partial: "layouts/count_notification", locals: {count_notification: @notifications.size} %>
+              </a>
+              <%= render partial: "layouts/notification_box", locals: {notifications: @notifications} %>
+            </li>
             <li class="dropdown dropdown-user dropdown-dark">
               <%= link_to "", href: "#", class: "dropdown-toggle", data: {toggle: "dropdown", hover: "dropdown", "close-others": "true"} do %>
                 <% if current_user.avatar.present? %>
