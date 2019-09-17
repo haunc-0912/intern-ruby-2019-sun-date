@@ -11,15 +11,11 @@ class User < ApplicationRecord
   enum role: {normal: 0, admin: 1}
   enum gender: {male: 0, female: 1, both: 2}
 
-  has_many :images, dependent: :destroy
-  
-  has_many :active_messages, class_name: Message.name,
-  foreign_key: "sender_id", dependent: :destroy
-  has_many :receivers, through: :active_messages, source: :receiver
+  has_many :messages
 
-  has_many :passive_messages, class_name: Message.name,
-  foreign_key: "receiver_id", dependent: :destroy
-  has_many :senders, through: :passive_messages, source: :sender
+  has_many :conversations, foreign_key: :sender_id
+
+  has_many :images, dependent: :destroy
 
   has_many :active_reactions, class_name: Reaction.name,
   foreign_key: "active_user_id", dependent: :destroy

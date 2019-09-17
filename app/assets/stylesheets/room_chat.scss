@@ -1,0 +1,35 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'colors.scss';
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.messages-list {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.message-sent {
+  position: relative;
+  background-color: $light-blue;
+  border-color: $lighter-blue;
+  margin: 5px 20px;
+  padding: 10px;
+  float: right;
+}
+
+.message-received {
+  background-color: $gray;
+  border-color: $black;
+  margin: 5px 20px;
+  padding: 10px;
+  float: left;
+}
+
+#btn-send-chat{
+  margin-top: 2%;
+}

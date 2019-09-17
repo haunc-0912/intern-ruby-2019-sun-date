@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
+  get 'room_chat/index'
   root "static_pages#home"
   mount ActionCable.server => "/cable"
 
   resources :dating_informations
   resources :images
   resources :matches, only: %i(index show)
+
+  resources :conversations, only: [:create] do
+    member do
+      post :close
+    end
+
+    resources :messages, only: [:create]
+  end
+
   resource :dating_criterias, only: %i(edit update)
 
   get "dating_criterias/search_location", to: "dating_criterias#search_location"

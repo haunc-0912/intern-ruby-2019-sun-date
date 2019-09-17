@@ -1,0 +1,9 @@
+<li>
+  <div class="row">
+    <div class="<%= user.id == message.user_id ? "message-sent" : "message-received" %>">
+      <%= message.body %>
+    </div>
+    <div class="clear_both"></div>
+    <small class="date_message <%= user.id == message.user_id ? "text-right" : "text-left" %>"><%= message.created_at.strftime("%I:%M%p %m/%d/%Y") %></small>
+  </div>
+</li>

@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :company
       t.string :image_sc
       t.integer :role, default: 0
+      t.integer :dating_information_id
 
       t.timestamps
     end
