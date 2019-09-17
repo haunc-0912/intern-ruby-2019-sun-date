@@ -1,0 +1,26 @@
+<li>
+  <%= link_to "#" do %>
+    <span class="time">
+      <%= format_time notification.created_at %>
+    </span>
+    <span class="details clearfix">
+      <% if notification.key == Settings.noti_key.like %>
+        <span class="label label-sm label-icon label-success">
+          <i class="fa fa-bullhorn"></i>
+        </span>
+      <% elsif notification.key == Settings.noti_key.match %>
+        <span class="label label-sm label-icon label-danger">
+          <i class="fa fa-heart"></i>
+        </span>
+      <% end %>
+      <span class="content">
+        <b class="text-danger">
+          <%= notification.owner.name %>
+        </b>
+        <%= notification.key %>
+        <%= t "notification.you" %>
+        <%= notification.parameters if notification.parameters.present? %>
+      </span>
+    </span>
+  <% end %>
+</li>

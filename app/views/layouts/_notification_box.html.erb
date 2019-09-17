@@ -1,0 +1,9 @@
+<ul class="dropdown-menu">
+  <li>
+    <ul class="dropdown-menu-list scroller" data-handle-color="#637283" id="notification-box">
+      <% notifications.each do |notification| %>
+        <%= render "layouts/notification", notification: notification %>
+      <% end %>
+    </ul>
+  </li>
+</ul>

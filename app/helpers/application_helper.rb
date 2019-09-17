@@ -13,6 +13,10 @@ module ApplicationHelper
     l date
   end
 
+  def format_time time
+    l time, format: :short
+  end
+
   def calculate_age date
     ((Time.zone.now - date.to_time) / 1.year.seconds).floor
   end
