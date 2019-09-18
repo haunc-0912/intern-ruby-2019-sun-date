@@ -49,6 +49,23 @@ en:
     title: "Sun-Date"
   home:
     title: "Home"
+    slide_tilte: "Find your companion."
+    slide_sub_title: "Browse and make connections for free."
+    feature_1:
+      title: "Discover & communicate"
+      desc: "Virtually meet thousands of like-minded singles and connect at lightning speed; on desktop, tablet, and your beloved phone. Chat into the wee hours of the night if you'd like. Post photos, share your interests and dreams-we'll help you look your best while you do it."
+    feature_2:
+      title: "Save time & money"
+      desc: "By the time you find a parking space and buy a drink, you've already spent a good deal of money and still haven't met anyone. Here we make it easy to meet folks and feel things out first–so when you do go on that first date, or meet for coffee, you can relax and be yourself."
+    feature_3:
+      title: "Safety & support"
+      desc: "It can be rough out there in the wild. Here, you benefit from our internal review protocols, high-level encryption, and an entire community of fellow seekers who help weed out the haters. For more than 15 years, we've been helping people find love and form powerful, long-lasting partnerships."
+    partner:
+      tilte: "Over 4.5 Million Connections made on"
+      desc: "This website is part of World Singles Networks™.
+              Our approach, networks, and team have been honed by over 15 years of
+              successfully helping millions of people all over the globe, in multiple
+              languages and cultures, connect and find love."
   header:
     external:
       you_have: "You have"
