@@ -9,6 +9,7 @@ class CreateDatingInformations < ActiveRecord::Migration[5.2]
       t.integer :end_age
       t.text :description
       t.integer :status, default: 1
+      t.integer :user_id
 
       t.timestamps
     end

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :message do
-    sender_id { FactoryBot.create(:user).id }
-    receiver_id { FactoryBot.create(:user).id }
-    content { FFaker::Lorem.paragraph }
+    body { "MyText" }
+    user { nil }
+    conversation { nil }
   end
 end
