@@ -1,0 +1,12 @@
+$('#setting-modal-body').html('<%= j render "form" %>');
+initRangeSlider();
+initSelect2();
+<% if @success %>
+  $('#setting-modal').modal('hide');
+  toastr.success('<%= t "flash.date_citerial_updated" %>','<%= t "flash.update_success" %>');
+  <% if @user_next %>
+    $('#content-inner').html('<%= j render "suggest_users/user", user: @user_next %>');
+  <% else %>
+    $('#content-inner').html('<%= j render "suggest_users/no_results" %>');
+  <% end %>
+<% end %>
