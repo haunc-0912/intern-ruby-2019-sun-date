@@ -18,14 +18,16 @@
               <%= render "form" %>
               <hr>
               <div class="row">
-                <% @users.each do |user| %>
+                <% @users.includes(:images).each do |user| %>
                   <div class="col-md-6">
-                    <div class="col-md-8" > 
+                    <div class="col-md-8" >
                       <%= link_to user.name, match_path(user)%> </div>
-                    <button class="btn btn-success btn-xs btn-chat" > <i class="fa fa-wechat"></i></button>
+                      <%= link_to conversations_path(user_id: user, seen_time: Time.now), remote: true, method: :post do %>
+                        <button class="btn btn-success btn-xs btn-chat" > <i class="fa fa-wechat"></i></button>
+                      <% end %>
                     <div class="flexslider">
                       <ul class="slides">
-                        <% user.images.all.each do |img| %>                         
+                        <% user.images.each do |img| %>
                           <li>
                             <%= image_tag img.link.url, class: "images img_slide"%>
                           </li>
@@ -50,6 +52,9 @@
               </div>
             </div>
             <div class="row">
+              <ul id="conversations-list">
+                <%= render partial: "conversations/conversation", collection: @conversations, as: :conversation, locals: {user: current_user}%>
+              </ul>
             </div>
           </div>
         </div>
