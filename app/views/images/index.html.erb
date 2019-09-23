@@ -37,7 +37,10 @@
                   <%= link_to t("image.delete"), image_path(img), method: :delete, class: "btn-sm btn-primary btn-delete" %>
                 </div>
               <% end %>
+              
             </div>
+            <hr>
+            <%= paginate @image, theme: "twitter-bootstrap-3"%>
           </div>
         </div>
       </div>

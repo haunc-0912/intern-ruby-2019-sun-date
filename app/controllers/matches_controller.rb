@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
   def index
     @search = User.ransack(params[:q])
-    @users = @search.result.info_user_match current_user.id
+    @users = @search.result.info_user_match(current_user).page(params[:page]).per Settings.page
   end
 
   def show

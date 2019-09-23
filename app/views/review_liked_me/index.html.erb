@@ -1,0 +1,30 @@
+<% content_for :body_class, "page-container-bg-solid" %>
+
+<div class="page-container">
+  <div class="page-content-wrapper">
+    <div class="page-head">
+      <div class="container">
+        <div class="page-head__inner">
+          <div class="page-title">
+            <h1>
+              <%= t "suggestion.title" %>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-content margin-bottom-25">
+      <div class="page-content-inner" id="content-inner">
+        <% if @users %>
+          <div class="row">
+            <%= render "user", user: @users %>
+          </div>
+          <%= paginate @users, theme: "twitter-bootstrap-3"  %>
+        <% else %>
+          <%= render "reaction/no_results" %>
+      <% end %>
+      </div>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+</div>

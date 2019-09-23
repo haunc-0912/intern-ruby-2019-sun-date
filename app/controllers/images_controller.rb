@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   before_action :load_user, only: %i(index create)
 
   def index
-    @image = @user.images.all
+    @image = @user.images.all.page(params[:page]).per Settings.page
   end
 
   def create
