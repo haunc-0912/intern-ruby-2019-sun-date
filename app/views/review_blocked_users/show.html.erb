@@ -7,10 +7,9 @@
         <div class="page-head__inner">
           <div class="page-title">
             <h1>
-              <%= t "suggestion.title" %>
+              <%= t "review_block.title" %>
             </h1>
           </div>
-          <%= link_to t("button.set_criteria"), edit_dating_criterias_path, remote: true, class: "btn btn-primary btn-edit-criteria" %>
         </div>
       </div>
     </div>
@@ -23,7 +22,6 @@
       <% end %>
       </div>
       <div id="modal-content"></div>
-      <%= render "modal_setting" %>
     </div>
   </div>
 </div>

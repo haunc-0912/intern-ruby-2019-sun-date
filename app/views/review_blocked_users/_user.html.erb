@@ -18,9 +18,7 @@
     </div>
     <div class="profile-userbuttons">
       <div class="btn-group btn-group btn-group-justified">
-        <%= link_to t("action.like"), react_suggest_users_path(passive_user_id: user.id, react: :like), class: "btn btn-success", remote: true %>
-        <%= link_to t("action.dislike"), react_suggest_users_path(passive_user_id: user.id, react: :dislike), class: "btn red", remote: true %>
-        <%= link_to t("action.block"), react_suggest_users_path(passive_user_id: user.id, react: :block), class: "btn grey-cascade", remote: true %>
+        <%= link_to t("action.unblock"), react_review_blocked_users_path(passive_user_id: user.id), class: "btn grey-cascade", remote: true %>
       </div>
     </div>
   </div>

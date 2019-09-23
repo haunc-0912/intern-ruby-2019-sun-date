@@ -134,6 +134,7 @@ en:
     like: "Like"
     dislike: "Dislike"
     block: "Block"
+    unblock: "Unblock"
   suggestion:
     title: "Dating Suggestions"
     user_pro: "Approriate User Profile"
@@ -148,6 +149,7 @@ en:
     update_success: "Update Success!"
     update_fail: "Update Failed!"
     you_like: "You liked "
+    you_unblock: "You unblocked "
     like: "Like Success!!!"
     you_dislike: "You disliked "
     dislike: "Dislike Success!!!"
@@ -199,3 +201,9 @@ en:
     chat: "Chat"
     user_name: "User Name:"
     button_search: "Search"
+  review:
+    dislike: "Dislike"
+    block: "Block"
+  review_block:
+    title: "Reviewing users were blocked"
+  check_age: ": you are not enough age to use app, you must be greater than or equal 18 "

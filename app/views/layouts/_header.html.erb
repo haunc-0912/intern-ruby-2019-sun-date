@@ -72,7 +72,16 @@
             <%= link_to t("header.sub-menu.match"), matches_path %>
           </li>
           <li class="menu-dropdown mega-menu-dropdown  ">
-            <%= link_to t("header.sub-menu.review"), review_path %>
+            <%= link_to t("header.sub-menu.review"), href: "#" %>
+
+            <ul class="dropdown-menu pull-left">
+              <li class=" ">
+                <%= link_to t("review.dislike"), review_disliked_users_path, class: "" %>
+              </li>
+              <li class=" ">
+                <%= link_to t("review.block"), review_blocked_users_path, class: "" %>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>

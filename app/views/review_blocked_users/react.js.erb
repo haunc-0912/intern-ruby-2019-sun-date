@@ -1,0 +1,5 @@
+<% if @user_next %>
+  $('#content-inner').html('<%= j render "user", user: @user_next %>');
+<% else %>
+  $('#content-inner').html('<%= j render "reaction/no_results" %>');
+<% end %>
