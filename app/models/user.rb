@@ -20,7 +20,13 @@ class User < ApplicationRecord
 
   has_many :active_reactions, class_name: Reaction.name,
   foreign_key: "active_user_id", dependent: :destroy
-  has_many :reactings, through: :active_reactions, source: :passive_user
+  has_many :reactings, through: :act<<<<<<< HEAD
+=======
+  def current_step? step_key
+    current_step == step_key
+  end
+
+>>>>>>> Require add information after signupive_reactions, source: :passive_user
 
   has_many :passive_reactions, class_name: Reaction.name,
   foreign_key: "passive_user_id", dependent: :destroy
@@ -104,7 +110,13 @@ class User < ApplicationRecord
   class << self
     def info_user_dislike user
       where(id: (Reaction.dislike user).pluck(:passive_user_id)).first
-    end
+    end<<<<<<< HEAD
+=======
+  def current_step? step_key
+    current_step == step_key
+  end
+
+>>>>>>> Require add information after signup
 
     def info_user_block user
       where(id: (Reaction.blocks user).pluck(:passive_user_id)).first
