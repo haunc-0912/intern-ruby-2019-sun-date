@@ -96,9 +96,6 @@ class User < ApplicationRecord
     active_react.status == passive_react.status && active_react.status == Settings.noti_key.like
   end
 
-  def info_user_block user
-  end
-
   class << self
     def info_user_dislike user
       where(id: (Reaction.dislike user).pluck(:passive_user_id)).first
