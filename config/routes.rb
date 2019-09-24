@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :dating_informations
   resources :images
-  resources :matches, only: %i(index show)
+  resources :matches, only: %i(index show destroy)
 
   resources :conversations, only: [:create] do
     member do

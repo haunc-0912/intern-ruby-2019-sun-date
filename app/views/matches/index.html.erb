@@ -22,8 +22,11 @@
                   <div class="col-md-6">
                     <div class="col-md-8" >
                       <%= link_to user.name, match_path(user)%> </div>
-                      <%= link_to conversations_path(user_id: user, seen_time: Time.now), remote: true, method: :post do %>
+                      <%= link_to conversations_path(user_id: user, seen_time: Time.now), remote: true, "data-toggle": "tooltip",title: t("match.tooltip.chat"), method: :post do %>
                         <button class="btn btn-success btn-xs btn-chat" > <i class="fa fa-wechat"></i></button>
+                      <% end %>
+                      <%= link_to match_path(user), "data-toggle": "tooltip",title: t("match.tooltip.disable_match"), method: :delete, data: { confirm: t("confirm.sure")} do %>
+                        <button class="btn btn-danger btn-xs btn-chat" > <i class="fa fa-times" aria-hidden="true"></i></button>
                       <% end %>
                     <div class="flexslider">
                       <ul class="slides">

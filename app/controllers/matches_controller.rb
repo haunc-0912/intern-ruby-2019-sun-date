@@ -13,4 +13,12 @@ class MatchesController < ApplicationController
     flash[:danger] = t "match.no_user"
     redirect_to matches_path
   end
+
+  def destroy
+    react = Reaction.find_by active_user_id: current_user, passive_user_id: params[:id]
+
+    return unless react
+    react.destroy
+    redirect_to matches_path
+  end
 end

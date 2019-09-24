@@ -18,8 +18,9 @@
     </div>
     <div class="profile-userbuttons">
       <div class="btn-group btn-group btn-group-justified">
-        <div class="col-md-6"> <%= link_to t("action.block"), react_suggest_users_path(passive_user_id: @user.id, react: :block), class: "btn grey-cascade", remote: true %></div>
-        <div class="col-md-6"><button class="btn btn-success btn-lg" ><i class="fa fa-wechat"></i></button></div>
+        <div class="col-md-4"> <%= link_to t("action.block"), react_suggest_users_path(passive_user_id: @user.id, react: :block), class: "btn grey-cascade", remote: true %></div>
+        <div class="col-md-4"><%= link_to t("match.disable"), match_path(@user), class: "btn btn-danger", method: :delete, data: { confirm: t("confirm.sure")} %></div>
+        <div class="col-md-4"><button class="btn btn-success btn-lg" ><i class="fa fa-wechat"></i></button></div>
       </div>
     </div>
   </div>
