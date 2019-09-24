@@ -52,7 +52,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for resource
-    new_dating_information_path
+    flash[:notice] = t "flash.require_set"
+    after_signup_path :set_dating_profile
   end
 
   # The path used after sign up for inactive accounts.

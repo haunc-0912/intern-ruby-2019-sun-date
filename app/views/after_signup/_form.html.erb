@@ -1,0 +1,45 @@
+<%= form_for @user, url: wizard_path, html: {method: :put, class: "register-form"} do |f| %>
+  <p class="hint">
+    <%= t "set_criteria.desc" %>
+  </p>
+
+  <%= render "devise/shared/error_messages", resource: @user %>
+
+  <%= f.fields_for :dating_information do |d| %>
+    <div class="form-group">
+      <label class="bold">
+        <%= t "setdating.prefer_gender" %>
+      </label>
+      <%= d.select :prefer_gender, options_for_select(prefer_gender_list, selected: d.object.prefer_gender), {}, {class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <label class="bold">
+        <%= t "setdating.age_range" %>
+      </label>
+      <div id="age_slider"></div>
+      <%= d.hidden_field :start_age %>
+      <%= d.hidden_field :end_age %>
+    </div>
+    <div class="form-group">
+      <label class="bold">
+        <%= t "setdating.location" %>
+      </label>
+      <%= d.select :dating_location, [[d.object.dating_location, d.object.dating_location]], {},{class: "form-control placeholder-no-fix"} %>
+    </div>
+    <div class="form-group">
+      <label class="bold">
+        <%= t "setdating.distance" %>
+        <%= Settings.km %>
+      </label>
+      <%= d.number_field :dating_distance, class: "form-control placeholder-no-fix", min: Settings.zero %>
+    </div>
+  <% end %>
+  <div class="form-actions clearfix">
+    <button
+      type="submit"
+      class="btn btn-success uppercase pull-right"
+    >
+      <%= t "button.finish" %>
+    </button>
+  </div>
+<% end %>

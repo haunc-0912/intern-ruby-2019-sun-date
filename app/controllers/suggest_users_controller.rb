@@ -1,5 +1,6 @@
 class SuggestUsersController < ApplicationController
   before_action :load_passive_user, except: :show
+  before_action :redirect_if_no_infor
 
   def show
     @user = User.get_suggest_user(current_user).first

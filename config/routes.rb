@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "static_pages#home"
   mount ActionCable.server => "/cable"
 
+  resources :after_signup
   resources :dating_informations
   resources :images
   resources :matches, only: %i(index show)

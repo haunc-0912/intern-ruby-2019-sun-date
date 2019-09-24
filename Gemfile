@@ -35,6 +35,7 @@ gem "flex-slider-rails"
 gem "bootstrap-sass", "~> 3.3.6"
 gem "kaminari"
 gem "bootstrap-kaminari-views"
+gem "wicked"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

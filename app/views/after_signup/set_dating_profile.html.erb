@@ -1,0 +1,100 @@
+<% content_for :body_class, "page-container-bg-solid" %>
+<div class="page-content">
+  <div class="container">
+    <div class="page-content-inner">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+              <div class="caption caption-md">
+                <i class="icon-globe theme-font hide"></i>
+                <span class="caption-subject font-blue-madison bold uppercase">
+                  <%= t "setdating.title" %>
+                </span>
+              </div>
+            </div>
+            <div class="portlet-body">
+              <%= form_for @user, url: wizard_path, html: {method: :put, class: "register-form"} do |f| %>
+                <%= render "devise/shared/error_messages", resource: @user %>
+                <p class="hint">
+                  <%= t "setdating.desc" %>
+                </p>
+                <div class="form-group">
+                  <label class="bold">
+                    <%= t "signup.gender" %>
+                  </label>
+                  <%= f.select :gender, options_for_select(prefer_gender_list.tap(&:pop), selected: f.object.gender), {}, {class: "form-control"} %>
+                </div>
+                <div class="form-group">
+                  <label class="bold">
+                    <%= t "signup.birthday" %>
+                  </label>
+                  <div
+                    class="input-group date date-picker"
+                    data-date="12-02-2012"
+                    data-date-format="dd-mm-yyyy"
+                    data-date-viewmode="years"
+
+                  >
+                    <%= f.text_field :birthday, class: "form-control" %>
+                    <span class="input-group-btn">
+                    <button class="btn default" type="button">
+                      <i class="fa fa-calendar"></i>
+                    </button>
+                  </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="bold">
+                    <%= t "signup.avatar" %>
+                  </label>
+                  <%= f.file_field :avatar, placeholder: t("login.label.password_confirm"), class: "form-control form-control-solid placeholder-no-fix" %>
+                </div>
+                <div class="form-group">
+                  <label class="bold">
+                    <%= t "signup.address" %>
+                  </label>
+                  <%= f.text_field :address, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <label class="bold">
+                    <%= t "signup.company" %>
+                  </label>
+                  <%= f.text_field :company, class: "form-control" %>
+                </div>
+                <%= f.fields_for :dating_information do |ff| %>
+                  <div class="form-group">
+                    <label class="bold">
+                      <%= t "setdating.height" %>
+                      <%= Settings.cm %>
+                    </label>
+                    <%= ff.number_field :height, class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <label class="bold">
+                      <%= t "setdating.weight" %>
+                      <%= Settings.kg %>
+                    </label>
+                    <%= ff.number_field :weight, class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <label class="bold">
+                      <%= t "setdating.description" %>
+                      <%= t "setdating.max" %>
+                    </label>
+                    <%= ff.text_area :description, class: "form-control" %>
+                  </div>
+                <% end %>
+                <div class="form-actions text-right">
+                  <button type="submit" class="btn btn-success uppercase">
+                    <%= t "button.next" %>
+                  </button>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

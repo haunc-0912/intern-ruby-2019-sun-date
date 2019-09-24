@@ -108,8 +108,6 @@ User.create!(
     },
     images_attributes: [
       {link: Rails.root.join("app/assets/images/img_7.jpg").open},
-      {link: Rails.root.join("app/assets/images/img_2.jpg").open},
-      {link: Rails.root.join("app/assets/images/img_3.jpg").open}
     ]
   )
 end

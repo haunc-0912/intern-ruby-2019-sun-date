@@ -5,6 +5,7 @@ class Reaction < ApplicationRecord
 
   belongs_to :active_user, class_name: User.name
   belongs_to :passive_user, class_name: User.name
+  validates :active_user_id, uniqueness: { scope: :passive_user_id }
 
   scope :matches, ->(user) {where active_user_id: user, status: :like, passive_user_id: (where passive_user_id: user, status: :like).pluck(:active_user_id)}
   scope :dislike, ->(user) {where active_user_id: user, status: :dislike}

@@ -40,7 +40,9 @@ en:
   button:
     back: "Back"
     submit: "Submit"
+    finish: "Finish"
     cancel: "Cancel"
+    next: "Next"
     set_criteria: "Set dating criteria"
     yes: "Yes"
   validates:
@@ -161,6 +163,8 @@ en:
     no_suggest_users: "Don't have anymore people with your dating citerial. Update your dating citerial for more suggestions."
     no_images: "Don't have images."
     date_citerial_updated: "Your dating citerial has been updated"
+    setting_done: "Settings done! Please find your companion with these suggestions"
+    require_set: "You must set all your information before continue!"
   notification:
     match: "match with"
     you: "you."
