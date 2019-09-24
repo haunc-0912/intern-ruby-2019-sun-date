@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include ApplicationHelper
+  attr_accessor :current_step
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
@@ -11,9 +12,9 @@ class User < ApplicationRecord
   enum role: {normal: 0, admin: 1}
   enum gender: {male: 0, female: 1, both: 2}
 
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
-  has_many :conversations, foreign_key: :sender_id
+  has_many :conversations, foreign_key: :sender_id, class_name: Conversation.name
 
   has_many :images, dependent: :destroy
 
@@ -42,11 +43,15 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: Settings.validates.max_name}, allow_nil: true
   validates :email, presence: true, length: {maximum: Settings.validates.max_email},
-            format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}, allow_nil: true
-  validates :address, length: {maximum: Settings.validates.max_address}
-  validates :company, length: {maximum: Settings.validates.max_company}
+                format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}, allow_nil: true
   validates :password, presence: true, length: {minimum: Settings.validates.min_pass}, allow_nil: true
-  validate :age_can_not_be_less_than_18
+
+  with_options if: -> {current_step == :set_dating_profile} do
+    validates :birthday, presence: true
+    validates :address, presence: true, length: {maximum: Settings.validates.max_address}
+    validates :company, presence: true, length: {maximum: Settings.validates.max_company}
+    validate :age_can_not_be_less_than_18
+  end
 
   scope :by_status_reactings, -> (status){where id: Reaction.where(passive_user_id: self.pluck(:id), status: status).pluck(:passive_user_id)}
   scope :by_status_reacters, -> (status){where id: Reaction.where(active_user_id: self.pluck(:id), status: status).pluck(:active_user_id)}

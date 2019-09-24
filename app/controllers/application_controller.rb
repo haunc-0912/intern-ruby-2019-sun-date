@@ -20,6 +20,13 @@ class ApplicationController < ActionController::Base
     NotificationBroadcastJob.perform_now Notification.by_user(passive_user).size, notification
   end
 
+  def redirect_if_no_infor
+    return unless current_user.dating_information.blank? || current_user.dating_information.is_no_infor?
+
+    flash[:notice] = t "flash.require_set"
+    redirect_to after_signup_path :set_dating_profile
+  end
+
   protected
 
   def configure_permitted_parameters
