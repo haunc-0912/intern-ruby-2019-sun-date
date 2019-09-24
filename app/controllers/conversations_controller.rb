@@ -2,14 +2,15 @@ class ConversationsController < ApplicationController
   before_action :load_conversations, :add_to_conversations, only: %i(create)
 
   def create
+    conversationService = ConversationService.new @conversation
+    @conversation.update_attribute :seen_at, params[:seen_time]
+    conversationService.seen!
     respond_to :js
   end
 
   def close
     @conversation = Conversation.find_by params[:id]
-
     session[:conversations].delete @conversation.id
-
     respond_to :js
   end
 
