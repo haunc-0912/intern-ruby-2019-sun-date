@@ -1,7 +1,9 @@
 class MatchesController < ApplicationController
   def index
+    session[:conversations] ||= []
     @search = User.ransack(params[:q])
     @users = @search.result.info_user_match(current_user).page(params[:page]).per Settings.page
+    @conversations = Conversation.by_user current_user
   end
 
   def show

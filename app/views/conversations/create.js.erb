@@ -1,10 +1,12 @@
 var conversations = $('#conversations-list');
-var conversation = conversations.find("[data-conversation-id='" + "<%= @conversation.id %>" + "']");
-
+var conversation = conversations.find('[data-conversation-id=<%= @conversation.id %>]');
 if (conversation.length !== 1) {
-  conversations.append("<%= j(render 'conversations/conversation', conversation: @conversation, user: current_user) %>");
-  conversation = conversations.find("[data-conversation-id='" + "<%= @conversation.id %>" + "']");
+  conversations.append('<%= j(render 'conversations/conversation', conversation: @conversation, user: current_user) %>');
+  conversation = conversations.find('[data-conversation-id=<%= @conversation.id %>]');
 }
+
+conversation.parent().parent().children().addClass('hide_conversations');
+conversation.parent().removeClass('hide_conversations');
 
 conversation.find('.panel-body').show();
 

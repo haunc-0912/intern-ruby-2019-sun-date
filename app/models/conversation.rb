@@ -10,7 +10,7 @@ class Conversation < ApplicationRecord
       recipient_id: [sender_id, recipient_id])
   end
 
-  scope :find_current_user, -> (current_user) do
+  scope :by_user, -> (current_user) do
     where(sender_id: current_user).or(where recipient_id: current_user)
   end
 
