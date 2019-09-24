@@ -169,6 +169,7 @@ en:
     match: "match with"
     you: "you."
     match_description: "Please send greetings!"
+    no_noti: "No notification"
   dating:
     flash:
       error: "Error happened"
@@ -220,3 +221,8 @@ en:
     sure: "Are you sure to delete?"
   chat:
     seen_at: "Seen at"
+  title:
+    who_like_me: "Who like you?"
+    liked_me: "Liked Me"
+    user_profile: "User Profile"
+    match_me: "Matched Me"

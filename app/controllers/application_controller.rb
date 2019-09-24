@@ -12,12 +12,13 @@ class ApplicationController < ActionController::Base
   end
 
   def load_notifications
-    @notifications = Notification.by_user current_user
+    @notifications = Notification.by_user(current_user)
+    @count_notification = Notification.by_user(current_user).not_seen.size
   end
 
   def broadcast_notification reaction, key, active_user, passive_user
     notification = reaction.create_activity key: key, owner: active_user, recipient: passive_user
-    NotificationBroadcastJob.perform_now Notification.by_user(passive_user).size, notification
+    NotificationBroadcastJob.perform_now Notification.by_user(passive_user).not_seen.size, notification
   end
 
   def redirect_if_no_infor

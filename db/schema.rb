@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_20_144457) do
+ActiveRecord::Schema.define(version: 2019_09_24_062945) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "trackable_type"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2019_09_20_144457) do
     t.integer "prefer_gender"
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
-    t.integer "stage", default: 0
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -86,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_09_20_144457) do
     t.string "trackable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["owner_id", "recipient_id"], name: "index_notifications_on_owner_id_and_recipient_id"
     t.index ["owner_id"], name: "index_notifications_on_owner_id"
     t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 2019_09_20_144457) do
     t.string "avatar"
     t.string "provider"
     t.string "description"
-    t.integer "stage", default: 0
     t.index ["email"], name: "index_users_on_email"
     t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -26,3 +26,14 @@
 .page-header .page-header-top .top-menu .navbar-nav>li.dropdown-notification .dropdown-menu .dropdown-menu-list>li a .time {
   max-width: 78px;
 }
+
+@media (max-width: 991px) {
+  .page-header .page-header-menu {
+    display: block;
+    padding: 20px 0;
+  }
+
+  .home .page-header .page-header-menu {
+    padding: 0;
+  }
+}

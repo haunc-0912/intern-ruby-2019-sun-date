@@ -26,7 +26,7 @@ class ReviewLikedMeController < ApplicationController
       end
     end
     @users = User.info_user_like_me(current_user).page(params[:page]).per Settings.page
-    respond_to :js    
+    respond_to :js
   end
 
   private

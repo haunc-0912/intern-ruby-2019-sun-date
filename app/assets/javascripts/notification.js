@@ -12,7 +12,7 @@ App.notifications = App.cable.subscriptions.create({
     },
     update_counter: function (counter) {
       var $counter;
-      $counter = $('#notification-counter');
+      $counter = $('#notification-counter-wrap');
       return $counter.html(counter);
     },
     update_notifications: function (notification) {

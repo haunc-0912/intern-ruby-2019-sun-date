@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get "room_chat/index"
   get "dating_criterias/search_location", to: "dating_criterias#search_location"
+  get "notifications/update", to: "notifications#update"
 
   resource :suggest_users, only: :show do
     get :react

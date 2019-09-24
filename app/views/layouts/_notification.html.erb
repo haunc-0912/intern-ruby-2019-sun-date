@@ -1,5 +1,5 @@
 <li>
-  <%= link_to "#" do %>
+  <%= link_to get_link_notification(notification.recipient, notification.owner, notification.key) do %>
     <span class="time">
       <%= format_time notification.created_at %>
     </span>
@@ -19,7 +19,6 @@
         </b>
         <%= notification.key %>
         <%= t "notification.you" %>
-        <%= notification.parameters if notification.parameters.present? %>
       </span>
     </span>
   <% end %>

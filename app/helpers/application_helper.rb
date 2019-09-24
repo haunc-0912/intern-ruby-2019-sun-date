@@ -36,4 +36,10 @@ module ApplicationHelper
   def show_time_message message
     I18n.l(message.created_at, format: :short)
   end
+
+  def get_link_notification current_user, other_user, key
+    return match_path(other_user) if key == Settings.noti_key.match || current_user.is_match?(other_user)
+
+    review_liked_me_path other_user
+  end
 end

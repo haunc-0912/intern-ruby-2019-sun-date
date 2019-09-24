@@ -10,7 +10,7 @@ validates:
   max_alt: 20
   max_location: 255
   max_distance: 200
-  max_age: 100
+  max_age: 101
   max_description: 5000
 zero: 0
 cm: "(cm)"
