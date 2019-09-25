@@ -32,7 +32,7 @@
             </div>
             <div class="row">
               <% @image.each do |img| %>
-                <div class="col-md-6 text-right">
+                <div class="col-md-6 text-right2">
                   <%= image_tag img.link.url, class: "images"%>
                   <%= link_to t("image.delete"), image_path(img), method: :delete, class: "btn-sm btn-primary btn-delete" %>
                 </div>

@@ -6,4 +6,8 @@ class Message < ApplicationRecord
   after_create_commit { MessageBroadcastJob.perform_later(self) }
 
   scope :by_conversation, ->(conversation_ids){where conversation_id: conversation_ids}
+  scope :by_not_sender, ->(user_id){where.not user_id: user_id}
+  scope :is_receiver, ->(user_id, conversation_id) do
+    by_not_sender(user_id).by_conversation(conversation_id)
+  end
 end

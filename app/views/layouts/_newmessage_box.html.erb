@@ -1,0 +1,13 @@
+<ul class="dropdown-menu">
+  <li>
+    <ul class="dropdown-menu-list scroller" data-handle-color="#637283" id="notification-box">
+      <b id="view_all">
+        <%= link_to t("match.view_all"), matches_path %>
+      </b>
+      <hr>
+      <% newmessages.each do |message| %>
+        <%= render "layouts/newmessages", message: message %>
+      <% end %>
+    </ul>
+  </li>
+</ul>

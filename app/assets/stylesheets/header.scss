@@ -1,3 +1,5 @@
+@import 'colors.scss';
+
 .page-logo #logo img {
   max-height: 100%;
 }
@@ -25,6 +27,19 @@
 
 .page-header .page-header-top .top-menu .navbar-nav>li.dropdown-notification .dropdown-menu .dropdown-menu-list>li a .time {
   max-width: 78px;
+}
+
+#view_all{
+  float: right;
+  margin-right: 4%;
+}
+
+.text-white {
+  color: $white;
+}
+
+.mg-3 {
+  margin-left: 10%;
 }
 
 @media (max-width: 991px) {

@@ -22,6 +22,12 @@
               </a>
               <%= render partial: "layouts/notification_box", locals: {notifications: @notifications} %>
             </li>
+            <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
+              <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" id="newmessage-counter">
+                <%= render partial: "layouts/count_newmessage", locals: {count_newmessage: @newmessages.size} %>
+              </a>
+              <%= render partial: "layouts/newmessage_box", locals: {newmessages: @newmessages} %>
+            </li>
             <li class="dropdown dropdown-user dropdown-dark">
               <%= link_to "", href: "#", class: "dropdown-toggle", data: {toggle: "dropdown", hover: "dropdown", "close-others": "true"} do %>
                 <% if current_user.avatar.present? %>
@@ -43,9 +49,9 @@
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to "", href:"#" do %>
+                    <%= link_to matches_path do %>
                       <i class="fa fa-envelope-open-o"></i> <%= t "header.menu.inbox" %>
-                      <span class="badge badge-danger"> <%= t "header.notifications.badge-default" %> </span>
+                      <span class="badge badge-danger"> <%= @newmessages.size %> </span>
                     <% end %>
                   </li>
                   <li class="divider"></li>

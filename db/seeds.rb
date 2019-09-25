@@ -7,7 +7,7 @@ User.create!(
   birthday: Time.zone.now - 22.years,
   address: FFaker::Address.street_address,
   company: FFaker::CompanyIT.name,
-  role: 0,
+  role: 1,
   avatar: Rails.root.join("app/assets/images/img_1.jpg").open,
   dating_information_attributes: {
     height: Random.rand(160..190),

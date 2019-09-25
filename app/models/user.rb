@@ -65,9 +65,9 @@ class User < ApplicationRecord
   scope :by_prefer_gender, ->(gender) do
     send("#{gender}") unless gender == Settings.gender.both
   end
-
+rails
   scope :get_suggest_user, ->(current_user) do
-    active.by_prefer_gender(current_user.dating_information.prefer_gender)
+    active.normal.by_prefer_gender(current_user.dating_information.prefer_gender)
       .by_no_reaction(current_user.id).by_no_block(current_user.id)
       .by_age_range(current_user.dating_information.start_age, current_user.dating_information.end_age)
       .by_distance(current_user, current_user.dating_information.dating_distance)

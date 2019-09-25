@@ -5,10 +5,16 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :load_notifications, if: :user_signed_in?
+  before_action :load_newmessages, if: :user_signed_in?
 
   def set_locale
     set_param_locale params[:locale] if params[:locale].present?
     I18n.locale = cookies[:locale] || I18n.default_locale
+  end
+
+  def load_newmessages
+    conversationService = ConversationService.new
+    @newmessages = conversationService.unSeen current_user.id
   end
 
   def load_notifications
@@ -33,5 +39,9 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit :account_update, keys: %i(reset_password_token)
     devise_parameter_sanitizer.permit :sign_up, keys: %i(name avatar)
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to main_app.root_path, alert: exception.message
   end
 end

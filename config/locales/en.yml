@@ -218,11 +218,12 @@ en:
     title: "Reviewing users were blocked"
   check_age: ": you are not enough age to use app, you must be greater than or equal 18 "
   confirm:
-    sure: "Are you sure to delete?"
-  chat:
-    seen_at: "Seen at"
+    sure: "Are you sure to remove match?"
   title:
     who_like_me: "Who like you?"
     liked_me: "Liked Me"
     user_profile: "User Profile"
     match_me: "Matched Me"
+  chat:
+    seen_at: "Seen at"
+    view_all: "View all"

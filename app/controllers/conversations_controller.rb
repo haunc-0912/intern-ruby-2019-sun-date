@@ -2,9 +2,9 @@ class ConversationsController < ApplicationController
   before_action :load_conversations, :add_to_conversations, only: %i(create)
 
   def create
-    conversationService = ConversationService.new @conversation
+    conversationService = ConversationService.new
     @conversation.update_attribute :seen_at, params[:seen_time]
-    conversationService.seen!
+    conversationService.seen! @conversation
     respond_to :js
   end
 

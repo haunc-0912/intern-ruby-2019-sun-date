@@ -1,0 +1,17 @@
+<li>
+  <div>
+    <span class="photo">
+      <% if message.user.avatar.present? %>
+        <%= image_tag message.user.avatar.url, class: "img-circle mg-3" %>
+      <% elsif message.user.image_sc.present? %>
+        <%= image_tag message.user.image_sc, class: "img-circle mg-3" %>
+      <% end %>
+    </span>
+    <span class="subject">
+      <span class="from"> <%= message.user.name %> </span>
+      <span class="time text-white mg-r-3"><%= format_time message.created_at %> </span>
+    </span>
+    <span class="message text-white"> <%= message.body %> </span>
+    <hr>
+  </div>
+</li>
