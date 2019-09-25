@@ -218,3 +218,5 @@ en:
   check_age: ": you are not enough age to use app, you must be greater than or equal 18 "
   confirm:
     sure: "Are you sure to delete?"
+  chat:
+    seen_at: "Seen at"

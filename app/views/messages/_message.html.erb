@@ -1,9 +1,9 @@
 <li>
   <div class="row">
-    <div class="<%= user.id == message.user_id ? "message-sent" : "message-received" %>">
+    <div class="<%= select_class_message message, user %>">
       <%= message.body %>
     </div>
     <div class="clear_both"></div>
-    <small class="date_message <%= user.id == message.user_id ? "text-right" : "text-left" %>"><%= message.created_at.strftime("%I:%M%p %m/%d/%Y") %></small>
+    <small class="date_message <%=  text_class_message message, user %>"> <%= seen_at_display message, user %> <%= show_time_message message %></small>
   </div>
 </li>
